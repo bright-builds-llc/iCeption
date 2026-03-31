@@ -1,6 +1,7 @@
 # Roadmap: iCeption
 
 **Created:** 2026-03-31
+**Approved:** 2026-03-31
 **Project:** iCeption
 **V1 requirements mapped:** 20 / 20
 **Unmapped:** 0
@@ -166,3 +167,4 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 ---
 *Roadmap created: 2026-03-31*
+*Roadmap approved: 2026-03-31*
