@@ -41,7 +41,7 @@ select {
   padding: 24px;
 }
 
-.entry-panel {
+.entry-surface {
   width: min(100%, 420px);
   padding: 32px 28px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -51,7 +51,19 @@ select {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.36);
 }
 
-.entry-panel h1 {
+.entry-surface--browser {
+  background:
+    linear-gradient(180deg, rgba(12, 20, 40, 0.86) 0%, rgba(8, 12, 24, 0.92) 100%),
+    rgba(10, 16, 33, 0.78);
+}
+
+.entry-surface--standalone {
+  background:
+    radial-gradient(circle at top, rgba(85, 152, 255, 0.2), transparent 42%),
+    rgba(10, 16, 33, 0.9);
+}
+
+.entry-surface h1 {
   margin: 0 0 12px;
   font-size: clamp(2.2rem, 9vw, 3.4rem);
   letter-spacing: -0.06em;
