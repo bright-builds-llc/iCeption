@@ -1,0 +1,27 @@
+{
+  "name": "iCeption",
+  "short_name": "iCeption",
+  "description": "Install iCeption to enter the standalone iPhone-inspired web app experience.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050812",
+  "theme_color": "#0a1331",
+  "icons": [
+    {
+      "src": "/icons/iception-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/iception-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/iception-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
