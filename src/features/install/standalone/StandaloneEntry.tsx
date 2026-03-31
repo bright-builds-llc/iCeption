@@ -56,9 +56,9 @@ export function StandaloneEntry({
         </div>
         <h1>Welcome to iCeption.</h1>
         <p className="standalone-entry__body">
-          You are on the installed app path now. The iPhone-style home screen
-          shell starts in Phase 2, but this branch already behaves like the
-          real product entry instead of the browser preview.
+          Installed mode is active. This branch is the real app entry path, and
+          it stays clean of browser-preview prompts while the home-screen shell
+          is completed in Phase 2.
         </p>
         <div className="standalone-entry__hint">
           Detected from {installSource}
