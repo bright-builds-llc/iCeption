@@ -70,3 +70,9 @@ select {
   color: rgba(227, 236, 255, 0.82);
   line-height: 1.5;
 }
+
+.entry-meta {
+  margin: 18px 0 0;
+  color: rgba(227, 236, 255, 0.62);
+  font-size: 0.9rem;
+}
