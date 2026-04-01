@@ -15,8 +15,8 @@ This file records that this repository is using the Bright Builds coding and arc
 - Audit manifest path: `coding-and-architecture-requirements.audit.md`
 - Auto-update: `enabled`
 - Auto-update reason: `trusted repo owner bright-builds-llc`
-- Last operation: `install`
-- Last updated (UTC): `2026-03-31T09:31:34Z`
+- Last operation: `update`
+- Last updated (UTC): `2026-04-01T15:03:43Z`
 
 ## Managed files
 
