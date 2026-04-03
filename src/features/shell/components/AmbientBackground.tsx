@@ -30,9 +30,11 @@ export function AmbientBackground({
       aria-hidden="true"
       className="ambient-background"
       data-motion={prefersReducedMotion ? "reduced" : "full"}
+      data-palette={defaultAmbientPalette.id}
       data-profile={profileKind}
       style={paletteStyle}
     >
+      <div className="ambient-background__wash" />
       <div className="ambient-background__layer ambient-background__layer--one" />
       <div className="ambient-background__layer ambient-background__layer--two" />
       <div className="ambient-background__layer ambient-background__layer--three" />
