@@ -68,6 +68,7 @@ Each task was committed atomically:
 ## Decisions Made
 - Chose a cool “laguna” palette for the first animated wallpaper, with blue-green dominance and lavender support
 - Kept the ambient background subtle and CSS-driven rather than escalating into a heavier rendering approach
+- Kept the palette token layer generic so later preset-selection work can reuse it without restructuring the wallpaper system
 
 ## Deviations from Plan
 
