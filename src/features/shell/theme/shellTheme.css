@@ -1,0 +1,18 @@
+.shell-scene {
+  color: var(--shell-text-color, #f4f8ff);
+  background:
+    radial-gradient(circle at top, color-mix(in srgb, var(--ambient-primary-glow) 72%, transparent), transparent 28%),
+    linear-gradient(180deg, var(--ambient-background-top) 0%, #0b1430 42%, var(--ambient-background-bottom) 100%);
+}
+
+.shell-status-bar,
+.shell-grid__label,
+.shell-grid__glyph,
+.shell-dock__glyph {
+  color: var(--shell-text-color, #f4f8ff);
+}
+
+.shell-dock {
+  background:
+    linear-gradient(180deg, var(--dock-glass-top) 0%, var(--dock-glass-bottom) 100%);
+}
