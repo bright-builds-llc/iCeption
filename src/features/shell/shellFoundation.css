@@ -1,0 +1,73 @@
+.shell-scene {
+  --shell-safe-area-top: env(safe-area-inset-top, 0px);
+  --shell-safe-area-right: env(safe-area-inset-right, 0px);
+  --shell-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --shell-safe-area-left: env(safe-area-inset-left, 0px);
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  color: #f4f8ff;
+  background:
+    radial-gradient(circle at top, rgba(108, 157, 255, 0.36), transparent 28%),
+    linear-gradient(180deg, #1a244d 0%, #0b1430 42%, #050813 100%);
+}
+
+.shell-scene__frame {
+  position: relative;
+  min-height: 100%;
+  padding-top: calc(var(--shell-safe-area-top) + var(--shell-status-top));
+  padding-right: calc(var(--shell-padding-x) + var(--shell-safe-area-right));
+  padding-bottom: calc(var(--shell-dock-bottom) + var(--shell-safe-area-bottom));
+  padding-left: calc(var(--shell-padding-x) + var(--shell-safe-area-left));
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-scene__status-placeholder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: var(--shell-status-height);
+  padding: 0 var(--shell-status-padding-x);
+  color: rgba(244, 248, 255, 0.86);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.shell-scene__grid-placeholder {
+  margin-top: var(--shell-grid-top);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--shell-grid-gap-y) var(--shell-grid-gap-x);
+}
+
+.shell-scene__tile,
+.shell-scene__dock-tile {
+  aspect-ratio: 1;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.shell-scene__tile {
+  width: var(--shell-icon-size);
+  justify-self: center;
+}
+
+.shell-scene__dock-placeholder {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  min-height: var(--shell-dock-height);
+  padding: var(--shell-dock-padding);
+  border-radius: 32px 32px 0 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+}
+
+.shell-scene__dock-tile {
+  width: var(--shell-dock-icon-size);
+  justify-self: center;
+}

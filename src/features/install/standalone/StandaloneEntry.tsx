@@ -3,6 +3,7 @@ import {
   completeLaunchIntro,
   createInitialLaunchState,
 } from "./LaunchState";
+import { AdaptiveShellFoundation } from "../../shell/AdaptiveShellFoundation";
 import {
   hasSeenStandaloneLaunch,
   markStandaloneLaunchSeen,
@@ -47,23 +48,11 @@ export function StandaloneEntry({
   }
 
   return (
-    <section className="standalone-entry">
-      <div className="standalone-entry__ready">
-        <div className="standalone-entry__badge">
-          {launchState.kind === "first-launch"
-            ? "Installed first launch"
-            : "Installed return"}
-        </div>
-        <h1>Welcome to iCeption.</h1>
-        <p className="standalone-entry__body">
-          Installed mode is active. This branch is the real app entry path, and
-          it stays clean of browser-preview prompts while the home-screen shell
-          is completed in Phase 2.
-        </p>
-        <div className="standalone-entry__hint">
-          Detected from {installSource}
-        </div>
-      </div>
+    <section
+      className="standalone-entry standalone-entry--shell"
+      data-install-source={installSource}
+    >
+      <AdaptiveShellFoundation />
     </section>
   );
 }

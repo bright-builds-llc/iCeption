@@ -14,6 +14,10 @@
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.48);
 }
 
+.app-shell[data-install-context="standalone"] {
+  padding: 0;
+}
+
 .standalone-entry__splash {
   margin: auto 0;
   display: grid;
@@ -36,6 +40,25 @@
   margin: 0;
   font-size: 1.1rem;
   color: rgba(243, 247, 255, 0.92);
+}
+
+.standalone-entry--shell {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  min-height: 100svh;
+  padding: 0;
+  justify-content: stretch;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+@supports (height: 100dvh) {
+  .standalone-entry--shell {
+    min-height: 100dvh;
+  }
 }
 
 .standalone-entry__ready {
