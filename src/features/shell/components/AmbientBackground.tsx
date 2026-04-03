@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { ShellProfileKind } from "../profile/createShellProfile";
 import { defaultAmbientPalette } from "../theme/ambientPalette";
+import { resolveAmbientMotion } from "../theme/resolveAmbientMotion";
 import "../theme/shellTheme.css";
 
 type AmbientBackgroundProps = {
@@ -14,6 +15,7 @@ export function AmbientBackground({
   profileKind,
   prefersReducedMotion,
 }: AmbientBackgroundProps) {
+  const motionMode = resolveAmbientMotion(prefersReducedMotion);
   const paletteStyle = {
     "--ambient-background-top": defaultAmbientPalette.backgroundTop,
     "--ambient-background-bottom": defaultAmbientPalette.backgroundBottom,
@@ -29,7 +31,7 @@ export function AmbientBackground({
     <div
       aria-hidden="true"
       className="ambient-background"
-      data-motion={prefersReducedMotion ? "reduced" : "full"}
+      data-motion={motionMode}
       data-palette={defaultAmbientPalette.id}
       data-profile={profileKind}
       style={paletteStyle}

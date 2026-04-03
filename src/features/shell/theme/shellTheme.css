@@ -46,6 +46,15 @@
   animation: ambient-drift-three 41s ease-in-out infinite alternate;
 }
 
+.ambient-background[data-motion="reduced"] .ambient-background__layer {
+  animation: none;
+  opacity: 0.38;
+}
+
+.ambient-background[data-motion="reduced"] .ambient-background__wash {
+  opacity: 0.4;
+}
+
 @keyframes ambient-drift-one {
   0% {
     transform: translate3d(-2%, 0%, 0) scale(1);
