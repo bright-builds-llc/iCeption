@@ -1,0 +1,117 @@
+.app-surface {
+  position: relative;
+  margin-top: var(--shell-grid-top);
+  min-height: calc(100% - var(--shell-grid-top));
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: 24px 22px 28px;
+  border-radius: 32px 32px 0 0;
+  background:
+    linear-gradient(180deg, rgba(8, 14, 30, 0.82) 0%, rgba(6, 10, 21, 0.9) 100%);
+  backdrop-filter: blur(26px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 -12px 40px rgba(0, 0, 0, 0.16);
+}
+
+.app-surface__header {
+  display: grid;
+  gap: 6px;
+}
+
+.app-surface__eyebrow {
+  color: rgba(244, 248, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.app-surface__title {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.app-surface__body {
+  min-height: 280px;
+}
+
+.app-surface__hint {
+  color: rgba(244, 248, 255, 0.54);
+  font-size: 0.84rem;
+}
+
+.coming-soon-app {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.coming-soon-app__badge {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(244, 248, 255, 0.88);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.coming-soon-app__body {
+  max-width: 28ch;
+  margin: 0;
+  color: rgba(244, 248, 255, 0.8);
+  line-height: 1.55;
+}
+
+.coming-soon-app__orb {
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  justify-self: center;
+  margin-top: 20px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.24), transparent 32%),
+    radial-gradient(circle at 65% 40%, rgba(122, 211, 199, 0.44), transparent 44%),
+    radial-gradient(circle at 45% 65%, rgba(176, 150, 255, 0.36), transparent 46%),
+    rgba(255, 255, 255, 0.04);
+  filter: blur(0.2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 18px 42px rgba(0, 0, 0, 0.16);
+}
+
+.calculator-app {
+  display: grid;
+  gap: 16px;
+}
+
+.calculator-app__display {
+  padding: 18px 0 8px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(2.8rem, 10vw, 4.4rem);
+  line-height: 1;
+  text-align: right;
+}
+
+.calculator-app__keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.calculator-app__key {
+  min-height: 64px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.2rem;
+}
+
+.calculator-app__key--0 {
+  grid-column: span 2;
+}

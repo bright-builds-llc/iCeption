@@ -1,4 +1,14 @@
+import { useState } from "react";
 import type { CSSProperties } from "react";
+import { CalculatorApp } from "../apps/calculator/CalculatorApp";
+import { AppSurface } from "../runtime/AppSurface";
+import { appRegistry } from "../runtime/appRegistry";
+import { ComingSoonApp } from "../runtime/ComingSoonApp";
+import {
+  createInitialHomeScreenRuntimeState,
+  getOpenRuntimeApp,
+  openRuntimeApp,
+} from "../runtime/homeScreenRuntime";
 import { getDockIcons, getHomeScreenIcons } from "./data/homeScreenIcons";
 import { AmbientBackground } from "./components/AmbientBackground";
 import { Dock } from "./components/Dock";
@@ -31,8 +41,18 @@ function createShellStyle(profile: ReturnType<typeof createShellProfile>) {
 export function AdaptiveShellFoundation() {
   const { sceneRef, metrics, prefersReducedMotion } = useShellViewport();
   const profile = createShellProfile(metrics);
-  const gridApps = getHomeScreenIcons();
-  const dockApps = getDockIcons();
+  const [runtimeState, setRuntimeState] = useState(() =>
+    createInitialHomeScreenRuntimeState(),
+  );
+  const gridApps = getHomeScreenIcons(appRegistry);
+  const dockApps = getDockIcons(appRegistry);
+  const maybeOpenApp = getOpenRuntimeApp(runtimeState, appRegistry);
+  const appSurfaceContent =
+    maybeOpenApp?.launchSurface === "calculator" ? (
+      <CalculatorApp />
+    ) : maybeOpenApp !== null ? (
+      <ComingSoonApp app={maybeOpenApp} />
+    ) : null;
 
   return (
     <section
@@ -49,8 +69,30 @@ export function AdaptiveShellFoundation() {
           profileKind={profile.kind}
         />
         <StatusBar profile={profile} />
-        <HomeScreenGrid apps={gridApps} profile={profile} />
-        <Dock apps={dockApps} profile={profile} />
+        {maybeOpenApp === null ? (
+          <>
+            <HomeScreenGrid
+              apps={gridApps}
+              onOpenApp={(appId) => {
+                setRuntimeState((currentState) =>
+                  openRuntimeApp(appId, appRegistry, currentState),
+                );
+              }}
+              profile={profile}
+            />
+            <Dock
+              apps={dockApps}
+              onOpenApp={(appId) => {
+                setRuntimeState((currentState) =>
+                  openRuntimeApp(appId, appRegistry, currentState),
+                );
+              }}
+              profile={profile}
+            />
+          </>
+        ) : (
+          <AppSurface app={maybeOpenApp}>{appSurfaceContent}</AppSurface>
+        )}
       </div>
     </section>
   );
