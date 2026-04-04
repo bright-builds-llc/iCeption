@@ -1,24 +1,31 @@
-const keypadRows = [
-  ["AC", "+/-", "%", "÷"],
-  ["7", "8", "9", "×"],
-  ["4", "5", "6", "−"],
-  ["1", "2", "3", "+"],
-  ["0", ".", "="],
-];
+import { useReducer } from "react";
+import { calculatorButtons } from "./calculatorButtons";
+import {
+  initialCalculatorState,
+  reduceCalculatorState,
+} from "./calculatorState";
 
 export function CalculatorApp() {
+  const [state, dispatch] = useReducer(
+    reduceCalculatorState,
+    initialCalculatorState,
+  );
+
   return (
     <section className="calculator-app">
-      <div className="calculator-app__display">0</div>
+      <div className="calculator-app__display">{state.display}</div>
       <div className="calculator-app__keypad">
-        {keypadRows.flatMap((row, rowIndex) =>
-          row.map((label) => (
+        {calculatorButtons.flatMap((row, rowIndex) =>
+          row.map((button) => (
             <button
-              className={`calculator-app__key calculator-app__key--${label}`}
-              key={`${rowIndex}-${label}`}
+              className={`calculator-app__key calculator-app__key--${button.variant}${button.wide ? " calculator-app__key--wide" : ""}`}
+              key={`${rowIndex}-${button.id}`}
+              onClick={() => {
+                dispatch(button.action);
+              }}
               type="button"
             >
-              {label}
+              {button.label}
             </button>
           )),
         )}
