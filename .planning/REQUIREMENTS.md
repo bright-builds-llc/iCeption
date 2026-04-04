@@ -40,8 +40,8 @@
 
 ### Verification
 
-- [ ] **QUAL-01**: Automated browser UI tests verify the main shell flow: onboarding/browser mode, home-screen render, implemented app launch, implemented app dismiss, and placeholder app launch.
-- [ ] **QUAL-02**: Automated browser UI tests verify the main Calculator happy-path interactions at a basic level.
+- [x] **QUAL-01**: Automated browser UI tests verify the main shell flow: onboarding/browser mode, home-screen render, implemented app launch, implemented app dismiss, and placeholder app launch.
+- [x] **QUAL-02**: Automated browser UI tests verify the main Calculator happy-path interactions at a basic level.
 
 ## v2 Requirements
 
@@ -90,8 +90,8 @@
 | CALC-03 | Phase 5 | Complete |
 | CALC-04 | Phase 5 | Complete |
 | CALC-05 | Phase 5 | Complete |
-| QUAL-01 | Phase 6 | Pending |
-| QUAL-02 | Phase 6 | Pending |
+| QUAL-01 | Phase 6 | Complete |
+| QUAL-02 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 20 total
@@ -100,4 +100,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-04-04 after phase 5 completion*
+*Last updated: 2026-04-04 after phase 6 completion*

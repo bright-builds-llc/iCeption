@@ -132,6 +132,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 **Goal:** Lock in confidence around the illusion-critical user journey and remove obvious fidelity rough edges before expansion.
 
+**Status:** Complete (verified 2026-04-04)
+
 **Requirements:** QUAL-01, QUAL-02
 
 **Why sixth:**
@@ -167,8 +169,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 | CALC-03 | Phase 5 | Complete |
 | CALC-04 | Phase 5 | Complete |
 | CALC-05 | Phase 5 | Complete |
-| QUAL-01 | Phase 6 | Pending |
-| QUAL-02 | Phase 6 | Pending |
+| QUAL-01 | Phase 6 | Complete |
+| QUAL-02 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 20 total
@@ -183,3 +185,4 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 *Phase 3 completed: 2026-04-04*
 *Phase 4 completed: 2026-04-04*
 *Phase 5 completed: 2026-04-04*
+*Phase 6 completed: 2026-04-04*
