@@ -69,6 +69,7 @@ The three launcher-interaction tasks were completed in the same combined Wave 2 
 ## Decisions Made
 - Kept the pressed-state interaction short and local, without borrowing from the motion phase
 - Used the same app-surface wrapper for Calculator and placeholder apps so the runtime shape stays consistent
+- Kept Calculator intentionally minimal in this phase so Phase 5 still owns full calculator fidelity
 
 ## Deviations from Plan
 
