@@ -26,9 +26,9 @@
 
 ### Motion and App Shell
 
-- [ ] **MOTN-01**: User opening an implemented app sees a smooth iPhone-like launch transition from the tapped icon into the full-screen app view.
-- [ ] **MOTN-02**: User can return from an open app to the home screen through a bottom-center Home control with a matching dismiss transition.
-- [ ] **MOTN-03**: The Home control appears only while an app is open and does not interfere with core app interactions.
+- [x] **MOTN-01**: User opening an implemented app sees a smooth iPhone-like launch transition from the tapped icon into the full-screen app view.
+- [x] **MOTN-02**: User can return from an open app to the home screen through a bottom-center Home control with a matching dismiss transition.
+- [x] **MOTN-03**: The Home control appears only while an app is open and does not interfere with core app interactions.
 
 ### Calculator
 
@@ -82,9 +82,9 @@
 | RUNT-01 | Phase 3 | Complete |
 | RUNT-02 | Phase 3 | Complete |
 | RUNT-03 | Phase 3 | Complete |
-| MOTN-01 | Phase 4 | Pending |
-| MOTN-02 | Phase 4 | Pending |
-| MOTN-03 | Phase 4 | Pending |
+| MOTN-01 | Phase 4 | Complete |
+| MOTN-02 | Phase 4 | Complete |
+| MOTN-03 | Phase 4 | Complete |
 | CALC-01 | Phase 5 | Pending |
 | CALC-02 | Phase 5 | Pending |
 | CALC-03 | Phase 5 | Pending |
@@ -100,4 +100,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-04-04 after phase 3 completion*
+*Last updated: 2026-04-04 after phase 4 completion*

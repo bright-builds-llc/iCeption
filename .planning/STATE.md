@@ -5,7 +5,7 @@
 See: `.planning/PROJECT.md` (updated 2026-03-31)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Phase 4 context gathering
+**Current focus:** Phase 5 context gathering
 
 ## Artifact Status
 
@@ -16,21 +16,21 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 | research/ | Complete | Stack, features, architecture, pitfalls, and summary written and committed |
 | REQUIREMENTS.md | Complete | V1 and V2 scope defined and committed |
 | ROADMAP.md | Complete | Approved roadmap with six phases covering all v1 requirements |
-| STATE.md | Active | Updated after Phase 3 completion |
+| STATE.md | Active | Updated after Phase 4 completion |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start Phase 4 context gathering or planning from the approved roadmap.
+- Start Phase 5 context gathering or planning from the approved roadmap.
 
 ### Most recently completed phase
 
-- **Phase 3: Home Screen Runtime** — complete and verified.
+- **Phase 4: Motion and App Navigation** — complete and verified.
 
 ### Planned next phase
 
-- **Phase 4: Motion and App Navigation** — make app open/close behavior feel like part of the OS illusion.
+- **Phase 5: Calculator App Fidelity** — deliver the first real app with convincing behavior and presentation.
 
 ## Notes
 
@@ -40,9 +40,9 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 
 ## Session
 
-**Last Date:** 2026-04-04T08:23:10.579Z
-**Stopped At:** Phase 4 context gathered
-**Resume File:** .planning/phases/04-motion-and-app-navigation/04-CONTEXT.md
+**Last Date:** 2026-04-04T08:45:12.829Z
+**Stopped At:** Phase 4 complete
+**Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-04-04 after phase 3 completion*
+*State updated: 2026-04-04 after phase 4 completion*

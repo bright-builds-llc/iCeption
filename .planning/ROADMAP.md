@@ -93,6 +93,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 **Goal:** Make the transition between home screen and app views feel intentional, reversible, and OS-like.
 
+**Status:** Complete (verified 2026-04-04)
+
 **Requirements:** MOTN-01, MOTN-02, MOTN-03
 
 **Why fourth:**
@@ -155,9 +157,9 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 | RUNT-01 | Phase 3 | Complete |
 | RUNT-02 | Phase 3 | Complete |
 | RUNT-03 | Phase 3 | Complete |
-| MOTN-01 | Phase 4 | Pending |
-| MOTN-02 | Phase 4 | Pending |
-| MOTN-03 | Phase 4 | Pending |
+| MOTN-01 | Phase 4 | Complete |
+| MOTN-02 | Phase 4 | Complete |
+| MOTN-03 | Phase 4 | Complete |
 | CALC-01 | Phase 5 | Pending |
 | CALC-02 | Phase 5 | Pending |
 | CALC-03 | Phase 5 | Pending |
@@ -177,3 +179,4 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 *Phase 1 completed: 2026-03-31*
 *Phase 2 completed: 2026-04-03*
 *Phase 3 completed: 2026-04-04*
+*Phase 4 completed: 2026-04-04*
