@@ -175,7 +175,7 @@ A post-execution milestone audit then identified one remaining installed-boundar
 
 **Goal:** Remove the low-severity browser-entry debts surfaced by the milestone audit without broadening V1 scope.
 
-**Status:** Planned (optional audit follow-up)
+**Status:** Complete (verified 2026-04-05)
 
 **Requirements:** INST-01, HOME-02, HOME-03, RUNT-01
 
@@ -233,3 +233,4 @@ Audit follow-up Phases 7 and 8 reinforce existing V1 requirements but do not cha
 *Phase 5 completed: 2026-04-04*
 *Phase 6 completed: 2026-04-04*
 *Phase 7 completed: 2026-04-05*
+*Phase 8 completed: 2026-04-05*

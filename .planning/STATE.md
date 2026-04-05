@@ -5,7 +5,7 @@
 See: `.planning/PROJECT.md` (updated 2026-03-31)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Milestone re-audit
+**Current focus:** Milestone final audit
 
 ## Artifact Status
 
@@ -15,22 +15,22 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 | config.json | Complete | Workflow set to YOLO, comprehensive, parallel, research/check/verifier on |
 | research/ | Complete | Stack, features, architecture, pitfalls, and summary written and committed |
 | REQUIREMENTS.md | Complete | V1 and V2 scope defined and committed |
-| ROADMAP.md | Active | Phase 7 completed; optional Phase 8 remains available |
-| STATE.md | Active | Updated after Phase 7 UAT pass |
+| ROADMAP.md | Active | Phase 8 completed; milestone closeout is ready |
+| STATE.md | Active | Updated after Phase 8 verification |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Re-run the milestone audit now that the Phase 7 installed-boundary blocker is closed.
+- Run the final milestone audit/closeout pass now that the optional Phase 8 cleanup is complete.
 
 ### Most recently completed phase
 
-- **Phase 7: Real Installed-Boundary Verification** — complete and verified.
+- **Phase 8: Preview/Install UX Parity Cleanup** — complete and verified.
 
 ### Planned next phase
 
-- **Phase 8: Preview/Install UX Parity Cleanup** — optional browser-entry cleanup if you want to pay down remaining non-blocking debt before archive.
+- None. The roadmap phase set is complete.
 
 ## Notes
 
@@ -38,13 +38,13 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 - The first milestone intentionally prioritizes shell fidelity, app runtime flexibility, and Calculator authenticity over breadth.
 - Basic browser UI tests are part of the V1 quality bar, not optional cleanup.
 - Phase 7 closed the milestone audit blocker with automated boundary coverage plus a completed literal Home Screen UAT pass.
-- Phase 8 remains optional browser-entry cleanup after the re-audit.
+- Phase 8 cleaned up the remaining browser preview/install UX debt surfaced by the prior audit.
 
 ## Session
 
-**Last Date:** 2026-04-05T09:24:58Z
-**Stopped At:** Phase 7 verified after manual UAT pass
-**Resume File:** .planning/phases/07-real-installed-boundary-verification/07-VERIFICATION.md
+**Last Date:** 2026-04-05T14:39:19Z
+**Stopped At:** Phase 8 complete
+**Resume File:** .planning/phases/08-preview-install-ux-parity-cleanup/08-VERIFICATION.md
 
 ---
-*State updated: 2026-04-05 after Phase 7 UAT pass*
+*State updated: 2026-04-05 after Phase 8 completion*
