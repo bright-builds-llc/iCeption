@@ -1,11 +1,21 @@
 import { describe, expect, it } from "vitest";
 import { createAppContext } from "./createAppContext";
 
-function createWindowLike(search: string) {
+function createWindowLike(
+  search: string,
+  maybeOptions?: {
+    displayModeStandalone?: boolean;
+    maybeLegacyStandalone?: boolean;
+  },
+) {
   return {
     location: { search },
-    matchMedia: () => ({ matches: false }),
-    navigator: {} as Navigator & { standalone?: boolean },
+    matchMedia: () => ({
+      matches: maybeOptions?.displayModeStandalone ?? false,
+    }),
+    navigator: {
+      standalone: maybeOptions?.maybeLegacyStandalone,
+    } as Navigator & { standalone?: boolean },
   };
 }
 
@@ -49,6 +59,34 @@ describe("createAppContext", () => {
     expect(result.installContext).toEqual({
       kind: "browser",
       source: "default-browser",
+    });
+  });
+
+  it("uses display-mode standalone when not in dev mode", () => {
+    // Arrange
+    const win = createWindowLike("", { displayModeStandalone: true });
+
+    // Act
+    const result = createAppContext(win, { isDev: false });
+
+    // Assert
+    expect(result.installContext).toEqual({
+      kind: "standalone",
+      source: "display-mode",
+    });
+  });
+
+  it("falls back to legacy standalone when display-mode is unavailable", () => {
+    // Arrange
+    const win = createWindowLike("", { maybeLegacyStandalone: true });
+
+    // Act
+    const result = createAppContext(win, { isDev: false });
+
+    // Assert
+    expect(result.installContext).toEqual({
+      kind: "standalone",
+      source: "legacy-standalone",
     });
   });
 });

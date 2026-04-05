@@ -18,8 +18,10 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "pnpm dev --host 127.0.0.1 --port 42317",
+    command:
+      "pnpm build && pnpm exec vite preview --strictPort --host 127.0.0.1 --port 42317",
     port: 42317,
     reuseExistingServer: false,
+    timeout: 120_000,
   },
 });

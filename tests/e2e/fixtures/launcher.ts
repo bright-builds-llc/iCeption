@@ -1,5 +1,35 @@
 import { expect, type Page } from "@playwright/test";
 
+const STANDALONE_MEDIA_QUERY = "(display-mode: standalone)";
+
+async function enableInstalledContextSignals(page: Page) {
+  await page.addInitScript((query) => {
+    const originalMatchMedia = window.matchMedia.bind(window);
+
+    window.matchMedia = (value: string) => {
+      if (value === query) {
+        return {
+          matches: true,
+          media: query,
+          onchange: null,
+          addListener: () => {},
+          removeListener: () => {},
+          addEventListener: () => {},
+          removeEventListener: () => {},
+          dispatchEvent: () => true,
+        } as MediaQueryList;
+      }
+
+      return originalMatchMedia(value);
+    };
+
+    Object.defineProperty(window.navigator, "standalone", {
+      configurable: true,
+      get: () => true,
+    });
+  }, STANDALONE_MEDIA_QUERY);
+}
+
 export async function gotoBrowserMode(page: Page) {
   await page.goto("/");
   await expect(page.locator("main.app-shell")).toHaveAttribute(
@@ -9,13 +39,22 @@ export async function gotoBrowserMode(page: Page) {
   await expect(page.getByTestId("install-overlay")).toBeVisible();
 }
 
-export async function gotoStandaloneMode(page: Page) {
-  await page.goto("/?openos-install-context=standalone");
+export async function gotoInstalledContextMode(page: Page) {
+  await enableInstalledContextSignals(page);
+  await page.goto("/");
   await expect(page.locator("main.app-shell")).toHaveAttribute(
     "data-install-context",
     "standalone",
   );
+  await expect(page.locator("main.app-shell")).toHaveAttribute(
+    "data-install-source",
+    "display-mode",
+  );
   await waitForHomeScreen(page);
+}
+
+export async function gotoStandaloneMode(page: Page) {
+  await gotoInstalledContextMode(page);
 }
 
 export async function openApp(page: Page, appId: string) {
