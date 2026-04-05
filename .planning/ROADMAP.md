@@ -155,7 +155,7 @@ A post-execution milestone audit then identified one remaining installed-boundar
 
 **Goal:** Prove the real installed-PWA/display-mode launch boundary end to end instead of relying on the dev-only standalone override in browser verification.
 
-**Status:** Planned (must-close audit follow-up)
+**Status:** Complete (verified 2026-04-05)
 
 **Requirements:** INST-02, QUAL-01
 
@@ -232,3 +232,4 @@ Audit follow-up Phases 7 and 8 reinforce existing V1 requirements but do not cha
 *Phase 4 completed: 2026-04-04*
 *Phase 5 completed: 2026-04-04*
 *Phase 6 completed: 2026-04-04*
+*Phase 7 completed: 2026-04-05*

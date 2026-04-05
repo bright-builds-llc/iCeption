@@ -1,8 +1,8 @@
 ---
 phase: 07-real-installed-boundary-verification
-status: pending-human-run
+status: passed
 purpose: literal installed-web-app boundary confirmation
-updated: 2026-04-04T20:35:00Z
+updated: 2026-04-05T09:24:58Z
 ---
 
 # Phase 7 Installed-Boundary UAT
@@ -40,13 +40,13 @@ This checklist captures the remaining manual confirmation needed if the mileston
 
 ## Result
 
-- [ ] PASS
+- [x] PASS
 - [ ] FAIL
 - [ ] BLOCKED
 
 ## Evidence
 
-- Environment:
-- URL tested:
-- Result:
-- Notes:
+- Environment: user-reported manual Safari and Home Screen verification on iPhone
+- URL tested: `http://192.168.86.213:42317/`
+- Result: PASS
+- Notes: User confirmed onboarding in Safari browser mode, successful Add to Home Screen flow, standalone launch intro and adaptive home screen after Home Screen launch, and Calculator open/home return behavior.
