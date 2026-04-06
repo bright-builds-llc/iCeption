@@ -1,4 +1,5 @@
 import {
+  getRuntimeGridPageCount,
   getRuntimeApp,
   type RuntimeApp,
   type RuntimeAppAvailability,
@@ -16,7 +17,10 @@ import {
   type MotionRect,
 } from "../motion/homeNavigationMotion";
 
-export type HomeScreenRuntimeState = HomeNavigationState;
+export type HomeScreenRuntimeState = HomeNavigationState & {
+  activePage: number;
+  originPage: number | null;
+};
 
 export const PRESSED_ICON_DURATION_MS = 120;
 
@@ -28,7 +32,11 @@ const defaultPreferences: HomeNavigationPreferences = {
 export function createInitialHomeScreenRuntimeState(
   preferences: HomeNavigationPreferences = defaultPreferences,
 ): HomeScreenRuntimeState {
-  return createInitialHomeNavigationState(preferences);
+  return {
+    ...createInitialHomeNavigationState(preferences),
+    activePage: 0,
+    originPage: null,
+  };
 }
 
 export function isRuntimeAppLaunchable(
@@ -50,7 +58,14 @@ export function openRuntimeApp(
     return currentState;
   }
 
-  return beginOpeningNavigation(appId, originRect, preferences);
+  const originPage =
+    currentState.originPage ?? currentState.activePage;
+
+  return {
+    ...beginOpeningNavigation(appId, originRect, preferences),
+    activePage: originPage,
+    originPage,
+  };
 }
 
 export function getOpenRuntimeApp(
@@ -70,7 +85,17 @@ export function closeRuntimeApp(
   currentState: HomeScreenRuntimeState,
   preferences: HomeNavigationPreferences = defaultPreferences,
 ): HomeScreenRuntimeState {
-  return beginClosingNavigation(currentState, preferences);
+  const nextState = beginClosingNavigation(currentState, preferences);
+
+  if (nextState.kind === currentState.kind) {
+    return currentState;
+  }
+
+  return {
+    ...nextState,
+    activePage: currentState.activePage,
+    originPage: currentState.originPage,
+  };
 }
 
 export function completeRuntimeTransition(
@@ -78,11 +103,19 @@ export function completeRuntimeTransition(
   preferences: HomeNavigationPreferences = defaultPreferences,
 ): HomeScreenRuntimeState {
   if (currentState.kind === "opening") {
-    return finishOpeningNavigation(currentState);
+    return {
+      ...finishOpeningNavigation(currentState),
+      activePage: currentState.activePage,
+      originPage: currentState.originPage,
+    };
   }
 
   if (currentState.kind === "closing") {
-    return finishClosingNavigation(currentState, preferences);
+    return {
+      ...finishClosingNavigation(currentState, preferences),
+      activePage: currentState.originPage ?? currentState.activePage,
+      originPage: null,
+    };
   }
 
   return currentState;
@@ -92,5 +125,37 @@ export function syncRuntimeMotionPreferences(
   currentState: HomeScreenRuntimeState,
   preferences: HomeNavigationPreferences = defaultPreferences,
 ): HomeScreenRuntimeState {
-  return syncHomeNavigationPreferences(currentState, preferences);
+  return {
+    ...syncHomeNavigationPreferences(currentState, preferences),
+    activePage: currentState.activePage,
+    originPage: currentState.originPage,
+  };
+}
+
+export function setActiveHomeScreenPage(
+  currentState: HomeScreenRuntimeState,
+  nextPage: number,
+  maybePageCount = Number.POSITIVE_INFINITY,
+): HomeScreenRuntimeState {
+  if (currentState.kind !== "home") {
+    return currentState;
+  }
+
+  const cappedPageCount = Math.max(1, maybePageCount);
+  const activePage = Math.min(
+    Math.max(0, nextPage),
+    cappedPageCount - 1,
+  );
+
+  return {
+    ...currentState,
+    activePage,
+    originPage: null,
+  };
+}
+
+export function getHomeScreenPageCount(
+  maybeApps: RuntimeApp[] = [],
+): number {
+  return getRuntimeGridPageCount(maybeApps);
 }

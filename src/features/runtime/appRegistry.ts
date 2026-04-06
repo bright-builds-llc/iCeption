@@ -15,6 +15,7 @@ export type RuntimeApp = {
   label: string;
   icon: RuntimeAppIcon;
   placement: RuntimeAppPlacement;
+  page?: number;
   availability: RuntimeAppAvailability;
   launchSurface: RuntimeAppLaunchSurface;
 };
@@ -25,6 +26,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Calendar",
     icon: { glyph: "17", tintStart: "#fff1f2", tintEnd: "#ef4444" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -33,6 +35,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Photos",
     icon: { glyph: "✿", tintStart: "#fbbf24", tintEnd: "#ec4899" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -41,6 +44,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Camera",
     icon: { glyph: "◉", tintStart: "#111827", tintEnd: "#6b7280" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -49,6 +53,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Weather",
     icon: { glyph: "☼", tintStart: "#38bdf8", tintEnd: "#2563eb" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -57,6 +62,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Clock",
     icon: { glyph: "◔", tintStart: "#0f172a", tintEnd: "#475569" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -65,6 +71,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Maps",
     icon: { glyph: "⌖", tintStart: "#34d399", tintEnd: "#0ea5e9" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -73,6 +80,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Notes",
     icon: { glyph: "☰", tintStart: "#fde68a", tintEnd: "#facc15" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -81,6 +89,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Health",
     icon: { glyph: "♥", tintStart: "#fb7185", tintEnd: "#f43f5e" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -89,6 +98,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Calculator",
     icon: { glyph: "＋", tintStart: "#111827", tintEnd: "#fb923c" },
     placement: "grid",
+    page: 0,
     availability: "implemented",
     launchSurface: "calculator",
   },
@@ -97,6 +107,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Music",
     icon: { glyph: "♫", tintStart: "#ec4899", tintEnd: "#8b5cf6" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -105,6 +116,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Mail",
     icon: { glyph: "✉", tintStart: "#60a5fa", tintEnd: "#2563eb" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -113,6 +125,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Files",
     icon: { glyph: "▣", tintStart: "#ffffff", tintEnd: "#cbd5e1" },
     placement: "grid",
+    page: 0,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -121,6 +134,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Journal",
     icon: { glyph: "✎", tintStart: "#c4b5fd", tintEnd: "#7c3aed" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -129,6 +143,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Messages",
     icon: { glyph: "◌", tintStart: "#4ade80", tintEnd: "#16a34a" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -137,6 +152,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Wallet",
     icon: { glyph: "▤", tintStart: "#60a5fa", tintEnd: "#111827" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -145,6 +161,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Settings",
     icon: { glyph: "⚙", tintStart: "#cbd5e1", tintEnd: "#64748b" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -153,6 +170,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Browser",
     icon: { glyph: "◍", tintStart: "#60a5fa", tintEnd: "#0f172a" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -161,6 +179,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Voice",
     icon: { glyph: "◠", tintStart: "#f9a8d4", tintEnd: "#db2777" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -169,6 +188,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Studio",
     icon: { glyph: "◆", tintStart: "#f97316", tintEnd: "#7c2d12" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -177,6 +197,7 @@ export const appRegistry: RuntimeApp[] = [
     label: "Library",
     icon: { glyph: "◎", tintStart: "#7dd3fc", tintEnd: "#14b8a6" },
     placement: "grid",
+    page: 1,
     availability: "coming-soon",
     launchSurface: "coming-soon",
   },
@@ -226,4 +247,27 @@ export function listRuntimeAppsByPlacement(
   maybeApps: RuntimeApp[] = appRegistry,
 ): RuntimeApp[] {
   return maybeApps.filter((app) => app.placement === placement);
+}
+
+export function listRuntimeGridAppsByPage(
+  page: number,
+  maybeApps: RuntimeApp[] = appRegistry,
+): RuntimeApp[] {
+  return maybeApps.filter(
+    (app) => app.placement === "grid" && (app.page ?? 0) === page,
+  );
+}
+
+export function getRuntimeGridPageCount(
+  maybeApps: RuntimeApp[] = appRegistry,
+): number {
+  const pages = maybeApps
+    .filter((app) => app.placement === "grid")
+    .map((app) => app.page ?? 0);
+
+  if (pages.length === 0) {
+    return 0;
+  }
+
+  return Math.max(...pages) + 1;
 }

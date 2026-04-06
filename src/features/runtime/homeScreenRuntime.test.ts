@@ -2,9 +2,13 @@ import { describe, expect, it } from "vitest";
 import { appRegistry } from "./appRegistry";
 import {
   createInitialHomeScreenRuntimeState,
+  getHomeScreenPageCount,
   getOpenRuntimeApp,
   openRuntimeApp,
   PRESSED_ICON_DURATION_MS,
+  setActiveHomeScreenPage,
+  completeRuntimeTransition,
+  closeRuntimeApp,
 } from "./homeScreenRuntime";
 
 describe("homeScreenRuntime", () => {
@@ -20,6 +24,8 @@ describe("homeScreenRuntime", () => {
       kind: "home",
       motionMode: "full",
       driver: "css",
+      activePage: 0,
+      originPage: null,
     });
   });
 
@@ -37,6 +43,8 @@ describe("homeScreenRuntime", () => {
       originRect: null,
       motionMode: "full",
       driver: "css",
+      activePage: 0,
+      originPage: 0,
     });
   });
 
@@ -59,6 +67,8 @@ describe("homeScreenRuntime", () => {
       originRect: null,
       motionMode: "full" as const,
       driver: "css" as const,
+      activePage: 1,
+      originPage: 1,
     };
 
     // Act
@@ -67,6 +77,60 @@ describe("homeScreenRuntime", () => {
     // Assert
     expect(result?.label).toBe("Messages");
     expect(result?.availability).toBe("coming-soon");
+  });
+
+  it("can switch the active home page while on the home screen", () => {
+    // Arrange
+    const currentState = createInitialHomeScreenRuntimeState();
+
+    // Act
+    const result = setActiveHomeScreenPage(currentState, 1, 2);
+
+    // Assert
+    expect(result.kind).toBe("home");
+    expect(result.activePage).toBe(1);
+    expect(result.originPage).toBeNull();
+  });
+
+  it("restores the launching page after closing an app", () => {
+    // Arrange
+    const preferences = {
+      prefersReducedMotion: false,
+      supportsViewTransitions: false,
+    };
+    const pageState = setActiveHomeScreenPage(
+      createInitialHomeScreenRuntimeState(),
+      1,
+      2,
+    );
+    const openingState = openRuntimeApp(
+      "calculator",
+      appRegistry,
+      pageState,
+      null,
+      preferences,
+    );
+    const openState = completeRuntimeTransition(openingState, preferences);
+    const closingState = closeRuntimeApp(openState, preferences);
+
+    // Act
+    const result = completeRuntimeTransition(closingState, preferences);
+
+    // Assert
+    expect(result.kind).toBe("home");
+    expect(result.activePage).toBe(1);
+    expect(result.originPage).toBeNull();
+  });
+
+  it("keeps the dock outside page partitioning", () => {
+    // Arrange
+    // No arrange needed.
+
+    // Act
+    const result = getHomeScreenPageCount(appRegistry);
+
+    // Assert
+    expect(result).toBe(2);
   });
 
   it("keeps the pressed icon duration brief and explicit", () => {
