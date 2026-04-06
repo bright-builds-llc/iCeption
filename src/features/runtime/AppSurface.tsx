@@ -18,6 +18,8 @@ export function AppSurface({
       className="app-surface"
       data-availability={app.availability}
       data-launch-surface={app.launchSurface}
+      data-settings-visibility={app.settings.visibility}
+      data-storage-namespace={app.storage.namespace}
       data-testid={`app-surface:${app.id}`}
     >
       <header className="app-surface__header">

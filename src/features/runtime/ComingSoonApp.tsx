@@ -8,7 +8,11 @@ export function ComingSoonApp({
   app,
 }: ComingSoonAppProps) {
   return (
-    <section className="coming-soon-app">
+    <section
+      className="coming-soon-app"
+      data-settings-visibility={app.settings.visibility}
+      data-storage-namespace={app.storage.namespace}
+    >
       <div className="coming-soon-app__badge">Coming Soon</div>
       <p className="coming-soon-app__body">
         {app.label} is staged in the launcher now and will get its full behavior
