@@ -3,6 +3,8 @@ import {
   builtInAppDefinitions,
   defineRuntimeApp,
 } from "./appDefinitions";
+import { createAppSettingsParticipation } from "./appSettings";
+import { createAppStorageMetadata } from "./appStorage";
 
 describe("appDefinitions", () => {
   it("defines grid apps with explicit page placement", () => {
@@ -52,6 +54,8 @@ describe("appDefinitions", () => {
       id: "test",
       label: "Test",
       icon: { glyph: "T", tintStart: "#111111", tintEnd: "#222222" },
+      settings: createAppSettingsParticipation("app-list"),
+      storage: createAppStorageMetadata("test"),
       placement: "grid",
       page: 2,
       availability: "coming-soon",
@@ -66,6 +70,8 @@ describe("appDefinitions", () => {
       id: "test",
       label: "Test",
       icon: { glyph: "T", tintStart: "#111111", tintEnd: "#222222" },
+      settings: createAppSettingsParticipation("app-list"),
+      storage: createAppStorageMetadata("test"),
       placement: "grid",
       page: 2,
       availability: "coming-soon",

@@ -1,12 +1,21 @@
 import {
   builtInAppDefinitions,
+  type AppSettingsParticipation,
+  type AppStorageMetadata,
   type RuntimeAppAvailability,
   type RuntimeAppDefinition,
   type RuntimeAppLaunchSurface,
   type RuntimeAppPlacement,
 } from "../platform/appDefinitions";
+import { listSettingsVisibleApps } from "../platform/appSettings";
+import {
+  getAppStorageNamespace,
+  listStorageManagedApps,
+} from "../platform/appStorage";
 
 export type {
+  AppSettingsParticipation,
+  AppStorageMetadata,
   RuntimeAppAvailability,
   RuntimeAppLaunchSurface,
   RuntimeAppPlacement,
@@ -51,4 +60,23 @@ export function getRuntimeGridPageCount(
   }
 
   return Math.max(...pages) + 1;
+}
+
+export function listRuntimeAppsForSettings(
+  maybeApps: RuntimeApp[] = appRegistry,
+): RuntimeApp[] {
+  return listSettingsVisibleApps(maybeApps);
+}
+
+export function listRuntimeStorageManagedApps(
+  maybeApps: RuntimeApp[] = appRegistry,
+): RuntimeApp[] {
+  return listStorageManagedApps(maybeApps);
+}
+
+export function getRuntimeAppStorageNamespace(
+  appId: string,
+  maybeApps: RuntimeApp[] = appRegistry,
+): string | null {
+  return getAppStorageNamespace(appId, maybeApps);
 }
