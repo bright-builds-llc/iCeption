@@ -35,7 +35,7 @@ describe("appDefinitions", () => {
     expect(maybePagedDockApp).toBeUndefined();
   });
 
-  it("preserves calculator as the only implemented built-in app", () => {
+  it("preserves the implemented built-in app set", () => {
     // Arrange
     const implementedApps = builtInAppDefinitions.filter(
       (app) => app.availability === "implemented",
@@ -45,7 +45,7 @@ describe("appDefinitions", () => {
     const result = implementedApps.map((app) => app.id);
 
     // Assert
-    expect(result).toEqual(["calculator"]);
+    expect(result).toEqual(["calculator", "settings"]);
   });
 
   it("returns a typed definition through the helper", () => {

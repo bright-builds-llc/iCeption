@@ -14,7 +14,10 @@ export type RuntimeAppPlacement = "grid" | "dock";
 
 export type RuntimeAppAvailability = "implemented" | "coming-soon";
 
-export type RuntimeAppLaunchSurface = "calculator" | "coming-soon";
+export type RuntimeAppLaunchSurface =
+  | "calculator"
+  | "settings"
+  | "coming-soon";
 
 export type RuntimeAppIcon = {
   glyph: string;
@@ -221,8 +224,8 @@ export const builtInAppDefinitions: RuntimeAppDefinition[] = [
     storage: createAppStorageMetadata("settings"),
     placement: "grid",
     page: 1,
-    availability: "coming-soon",
-    launchSurface: "coming-soon",
+    availability: "implemented",
+    launchSurface: "settings",
   }),
   defineRuntimeApp({
     id: "browser-grid",

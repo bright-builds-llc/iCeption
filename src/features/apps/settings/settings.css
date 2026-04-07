@@ -1,0 +1,120 @@
+.settings-app {
+  display: grid;
+  gap: 24px;
+}
+
+.settings-app__hero,
+.settings-app__group {
+  display: grid;
+  gap: 10px;
+}
+
+.settings-app__eyebrow {
+  margin: 0;
+  color: rgba(244, 248, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.settings-app__title,
+.settings-app__group-title {
+  margin: 0;
+  letter-spacing: -0.05em;
+}
+
+.settings-app__title {
+  font-size: clamp(2.2rem, 9vw, 3.4rem);
+  line-height: 0.94;
+}
+
+.settings-app__group-title {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.settings-app__body,
+.settings-app__group-body {
+  margin: 0;
+  color: rgba(244, 248, 255, 0.78);
+  line-height: 1.5;
+}
+
+.settings-app__body {
+  max-width: 34ch;
+}
+
+.settings-app__group-body {
+  max-width: 42ch;
+}
+
+.settings-app__chips {
+  display: grid;
+  gap: 12px;
+}
+
+.settings-app__chip,
+.settings-app__row {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.settings-app__chip {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+}
+
+.settings-app__chip[data-active="true"],
+.settings-app__row[data-active="true"] {
+  background: rgba(165, 198, 255, 0.14);
+  border-color: rgba(165, 198, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 12px 28px rgba(3, 7, 18, 0.14);
+}
+
+.settings-app__chip-title,
+.settings-app__row-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.settings-app__chip-hint,
+.settings-app__row-hint {
+  color: rgba(244, 248, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.settings-app__stack {
+  display: grid;
+  gap: 10px;
+}
+
+.settings-app__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.settings-app__row-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.settings-app__row-value {
+  min-width: 32px;
+  color: rgba(244, 248, 255, 0.9);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: right;
+}
