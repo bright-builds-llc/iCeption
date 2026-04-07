@@ -8,6 +8,10 @@ import {
   type OpenOsSettings,
   writeOpenOsSettings,
 } from "../../settings/settingsPreferences";
+import {
+  listRuntimeAppsForSettings,
+  listRuntimeStorageManagedApps,
+} from "../../runtime/appRegistry";
 import "./settings.css";
 
 const motionOptions: {
@@ -58,6 +62,10 @@ function PreferenceGroupLabel({
 export function SettingsApp() {
   const [settings, setSettings] = useState(() =>
     readOpenOsSettings(window.localStorage),
+  );
+  const settingsVisibleApps = listRuntimeAppsForSettings();
+  const storageManagedAppIds = new Set(
+    listRuntimeStorageManagedApps().map((app) => app.id),
   );
 
   useEffect(() => {
@@ -165,6 +173,42 @@ export function SettingsApp() {
               </button>
             );
           })}
+        </div>
+      </section>
+
+      <section className="settings-app__group">
+        <PreferenceGroupLabel
+          body="The first internal app-management surface is intentionally simple: it shows which apps currently participate in Settings and whether they already have a dedicated storage namespace."
+          eyebrow="Apps"
+          title="Platform Management"
+        />
+        <div
+          className="settings-app__stack"
+          data-testid="settings-managed-apps"
+        >
+          {settingsVisibleApps.map((app) => (
+            <section
+              className="settings-app__row settings-app__row--app"
+              data-testid={`settings-managed-app:${app.id}`}
+              key={app.id}
+            >
+              <span className="settings-app__row-copy">
+                <span className="settings-app__row-title">
+                  {app.label}
+                </span>
+                <span className="settings-app__row-hint">
+                  {storageManagedAppIds.has(app.id)
+                    ? app.storage.namespace
+                    : "No storage namespace"}
+                </span>
+              </span>
+              <span className="settings-app__row-value">
+                {app.settings.visibility === "app-list"
+                  ? "Visible"
+                  : "Hidden"}
+              </span>
+            </section>
+          ))}
         </div>
       </section>
     </section>
