@@ -3,6 +3,9 @@ import {
   appRegistry,
   getRuntimeApp,
   listRuntimeAppsByPlacement,
+  getRuntimeAppStorageNamespace,
+  listRuntimeAppsForSettings,
+  listRuntimeStorageManagedApps,
 } from "./appRegistry";
 
 describe("appRegistry", () => {
@@ -58,5 +61,62 @@ describe("appRegistry", () => {
     expect(result?.availability).toBe("implemented");
     expect(result?.launchSurface).toBe("calculator");
     expect(result?.placement).toBe("grid");
+  });
+
+  it("exposes settings-visible milestone apps through runtime selectors", () => {
+    // Arrange
+
+    // Act
+    const result = listRuntimeAppsForSettings(appRegistry).map(
+      (app) => app.id,
+    );
+
+    // Assert
+    expect(result).toEqual([
+      "notes",
+      "calculator",
+      "settings",
+      "browser-grid",
+      "browser",
+    ]);
+  });
+
+  it("exposes storage-managed milestone apps through runtime selectors", () => {
+    // Arrange
+
+    // Act
+    const result = listRuntimeStorageManagedApps(appRegistry)
+      .filter((app) =>
+        ["settings", "notes", "browser-grid", "browser"].includes(app.id),
+      )
+      .map((app) => app.id);
+
+    // Assert
+    expect(result).toEqual([
+      "notes",
+      "settings",
+      "browser-grid",
+      "browser",
+    ]);
+  });
+
+  it("resolves runtime storage namespaces for milestone apps", () => {
+    // Arrange
+
+    // Act
+    const result = [
+      getRuntimeAppStorageNamespace("notes"),
+      getRuntimeAppStorageNamespace("settings"),
+      getRuntimeAppStorageNamespace("browser-grid"),
+      getRuntimeAppStorageNamespace("browser"),
+    ];
+
+    // Assert
+    expect(result).toEqual([
+      "openos.apps.notes",
+      "openos.apps.settings",
+      "openos.apps.browser-grid",
+      "openos.apps.browser",
+    ]);
   });
 });

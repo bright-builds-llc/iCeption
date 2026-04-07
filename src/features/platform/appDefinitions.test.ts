@@ -54,6 +54,48 @@ describe("appDefinitions", () => {
     ]);
   });
 
+  it("assigns settings participation to the milestone apps", () => {
+    // Arrange
+    const milestoneApps = builtInAppDefinitions.filter((app) =>
+      ["settings", "notes", "browser-grid", "browser"].includes(app.id),
+    );
+
+    // Act
+    const result = milestoneApps.map((app) => ({
+      id: app.id,
+      visibility: app.settings.visibility,
+    }));
+
+    // Assert
+    expect(result).toEqual([
+      { id: "notes", visibility: "app-list" },
+      { id: "settings", visibility: "app-list" },
+      { id: "browser-grid", visibility: "app-list" },
+      { id: "browser", visibility: "app-list" },
+    ]);
+  });
+
+  it("assigns stable storage namespaces to the milestone apps", () => {
+    // Arrange
+    const milestoneApps = builtInAppDefinitions.filter((app) =>
+      ["settings", "notes", "browser-grid", "browser"].includes(app.id),
+    );
+
+    // Act
+    const result = milestoneApps.map((app) => ({
+      id: app.id,
+      namespace: app.storage.namespace,
+    }));
+
+    // Assert
+    expect(result).toEqual([
+      { id: "notes", namespace: "openos.apps.notes" },
+      { id: "settings", namespace: "openos.apps.settings" },
+      { id: "browser-grid", namespace: "openos.apps.browser-grid" },
+      { id: "browser", namespace: "openos.apps.browser" },
+    ]);
+  });
+
   it("returns a typed definition through the helper", () => {
     // Arrange
     const definition = defineRuntimeApp({
