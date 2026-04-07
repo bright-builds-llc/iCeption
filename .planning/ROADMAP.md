@@ -111,6 +111,8 @@
 
 **Goal:** Deliver a truthful, limited `Browser` app for curated/embed-safe destinations with graceful blocked-embed fallback.
 
+**Status:** Complete (verified 2026-04-07)
+
 **Requirements:** BROW-01, BROW-02, BROW-03, BROW-04
 
 **Why fifth:**
@@ -174,6 +176,7 @@
 
 ---
 *Roadmap updated: 2026-04-06 for v1.1 milestone initialization*
+*Phase 13 completed: 2026-04-07*
 *Phase 12 completed: 2026-04-07*
 *Phase 11 completed: 2026-04-06*
 *Phase 9 completed: 2026-04-06*

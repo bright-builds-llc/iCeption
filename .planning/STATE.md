@@ -5,7 +5,7 @@
 See: `.planning/PROJECT.md` (updated 2026-04-06)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Phase 13 planning ready
+**Current focus:** Phase 14 planning ready
 
 ## Artifact Status
 
@@ -17,22 +17,22 @@ See: `.planning/PROJECT.md` (updated 2026-04-06)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.1 requirements defined and mapped |
-| ROADMAP.md | Active | Phase 12 completed; phases 13-14 remain planned |
-| STATE.md | Active | Updated after Phase 12 verification |
+| ROADMAP.md | Active | Phase 13 completed; Phase 14 remains planned |
+| STATE.md | Active | Updated after Phase 13 verification |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start Phase 13 planning and execution for the managed Browser app.
+- Start Phase 14 planning and execution for verification and app integration.
 
 ### Most recently completed phase
 
-- **Phase 12: Notes App** — complete and verified.
+- **Phase 13: Managed Browser App** — complete and verified.
 
 ### Planned next phase
 
-- **Phase 13: Managed Browser App** — deliver a truthful, limited browser surface for curated/embed-safe destinations with graceful fallback.
+- **Phase 14: Verification and App Integration** — prove the new page/app/platform flows together and lock the milestone quality bar.
 
 ## Notes
 
@@ -44,13 +44,14 @@ See: `.planning/PROJECT.md` (updated 2026-04-06)
 - Phase 10 established the internal app-definition, settings-participation, and storage-namespace layer that later apps will consume.
 - Phase 11 established the shared settings store, real Settings app, and first internal app-management surface.
 - Phase 12 established local-only Notes persistence, a real Notes app, and browser-verified reopen behavior with honest no-sync messaging.
-- The next concrete step is to plan Phase 13; later phases continue through 14.
+- Phase 13 established the managed Browser app with a truthful embedded/fallback model and deterministic browser verification.
+- The next concrete step is to plan Phase 14 and lock the integrated milestone quality bar.
 
 ## Session
 
 **Last Date:** 2026-04-07T08:10:00Z
-**Stopped At:** Phase 12 complete
-**Resume File:** .planning/phases/12-notes-app/12-VERIFICATION.md
+**Stopped At:** Phase 13 complete
+**Resume File:** .planning/phases/13-managed-browser-app/13-VERIFICATION.md
 
 ---
-*State updated: 2026-04-07 after Phase 12 completion*
+*State updated: 2026-04-07 after Phase 13 completion*
