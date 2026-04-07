@@ -6,4 +6,5 @@
 [![TypeScript 6.0.2](https://img.shields.io/badge/TypeScript-6.0.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React 19.2.4](https://img.shields.io/badge/React-19.2.4-149ECA?logo=react&logoColor=white)](https://react.dev/)
 [![Vite 8.0.3](https://img.shields.io/badge/Vite-8.0.3-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Bright Builds Requirements](https://raw.githubusercontent.com/bright-builds-llc/coding-and-architecture-requirements/main/public/badges/bright-builds.svg)](https://github.com/bright-builds-llc/coding-and-architecture-requirements)
 <!-- coding-and-architecture-requirements-readme-badges:end -->
