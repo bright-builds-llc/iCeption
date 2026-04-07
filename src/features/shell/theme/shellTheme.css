@@ -5,6 +5,10 @@
     linear-gradient(180deg, var(--ambient-background-top) 0%, #0b1430 42%, var(--ambient-background-bottom) 100%);
 }
 
+.shell-scene[data-theme-preset="midnight"] {
+  box-shadow: inset 0 0 0 1px rgba(173, 197, 255, 0.06);
+}
+
 .shell-status-bar,
 .shell-grid__label,
 .shell-grid__glyph,

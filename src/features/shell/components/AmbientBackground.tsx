@@ -1,10 +1,11 @@
 import type { CSSProperties } from "react";
 import type { ShellProfileKind } from "../profile/createShellProfile";
-import { defaultAmbientPalette } from "../theme/ambientPalette";
+import type { AmbientPalette } from "../theme/ambientPalette";
 import { resolveAmbientMotion } from "../theme/resolveAmbientMotion";
 import "../theme/shellTheme.css";
 
 type AmbientBackgroundProps = {
+  palette: AmbientPalette;
   profileKind: ShellProfileKind;
   prefersReducedMotion: boolean;
 };
@@ -12,19 +13,20 @@ type AmbientBackgroundProps = {
 type AmbientBackgroundStyle = CSSProperties & Record<`--${string}`, string>;
 
 export function AmbientBackground({
+  palette,
   profileKind,
   prefersReducedMotion,
 }: AmbientBackgroundProps) {
   const motionMode = resolveAmbientMotion(prefersReducedMotion);
   const paletteStyle = {
-    "--ambient-background-top": defaultAmbientPalette.backgroundTop,
-    "--ambient-background-bottom": defaultAmbientPalette.backgroundBottom,
-    "--ambient-primary-glow": defaultAmbientPalette.primaryGlow,
-    "--ambient-secondary-glow": defaultAmbientPalette.secondaryGlow,
-    "--ambient-tertiary-glow": defaultAmbientPalette.tertiaryGlow,
-    "--dock-glass-top": defaultAmbientPalette.dockGlassTop,
-    "--dock-glass-bottom": defaultAmbientPalette.dockGlassBottom,
-    "--shell-text-color": defaultAmbientPalette.shellText,
+    "--ambient-background-top": palette.backgroundTop,
+    "--ambient-background-bottom": palette.backgroundBottom,
+    "--ambient-primary-glow": palette.primaryGlow,
+    "--ambient-secondary-glow": palette.secondaryGlow,
+    "--ambient-tertiary-glow": palette.tertiaryGlow,
+    "--dock-glass-top": palette.dockGlassTop,
+    "--dock-glass-bottom": palette.dockGlassBottom,
+    "--shell-text-color": palette.shellText,
   } as AmbientBackgroundStyle;
 
   return (
@@ -32,7 +34,7 @@ export function AmbientBackground({
       aria-hidden="true"
       className="ambient-background"
       data-motion={motionMode}
-      data-palette={defaultAmbientPalette.id}
+      data-palette={palette.id}
       data-profile={profileKind}
       style={paletteStyle}
     >

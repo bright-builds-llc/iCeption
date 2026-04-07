@@ -24,6 +24,12 @@ import { HomeScreenPages } from "./components/HomeScreenPages";
 import { StatusBar } from "./components/StatusBar";
 import { createShellProfile } from "./profile/createShellProfile";
 import { useShellViewport } from "./profile/useShellViewport";
+import {
+  readOpenOsSettings,
+  resolveAmbientPalette,
+  resolveMotionPreference,
+  subscribeToOpenOsSettings,
+} from "../settings/settingsPreferences";
 import "./shellFoundation.css";
 
 type ShellSceneStyle = CSSProperties & Record<`--${string}`, string>;
@@ -48,11 +54,19 @@ function createShellStyle(profile: ReturnType<typeof createShellProfile>) {
 
 export function AdaptiveShellFoundation() {
   const { sceneRef, metrics, prefersReducedMotion } = useShellViewport();
+  const [settings, setSettings] = useState(() =>
+    readOpenOsSettings(window.localStorage),
+  );
+  const prefersReducedMotionForShell = resolveMotionPreference(
+    settings,
+    prefersReducedMotion,
+  );
+  const ambientPalette = resolveAmbientPalette(settings);
   const profile = createShellProfile(metrics);
   const hasNativeViewTransitions = supportsViewTransitions();
   const [runtimeState, setRuntimeState] = useState(() =>
     createInitialHomeScreenRuntimeState({
-      prefersReducedMotion,
+      prefersReducedMotion: prefersReducedMotionForShell,
       supportsViewTransitions: hasNativeViewTransitions,
     }),
   );
@@ -68,26 +82,34 @@ export function AdaptiveShellFoundation() {
     ) : null;
 
   useEffect(() => {
+    return subscribeToOpenOsSettings(window, () => {
+      setSettings(readOpenOsSettings(window.localStorage));
+    });
+  }, []);
+
+  useEffect(() => {
     setRuntimeState((currentState) =>
       syncRuntimeMotionPreferences(currentState, {
-        prefersReducedMotion,
+        prefersReducedMotion: prefersReducedMotionForShell,
         supportsViewTransitions: hasNativeViewTransitions,
       }),
     );
-  }, [hasNativeViewTransitions, prefersReducedMotion]);
+  }, [hasNativeViewTransitions, prefersReducedMotionForShell]);
 
   return (
     <section
       aria-label="openOS shell foundation"
       className="shell-scene"
-      data-motion={prefersReducedMotion ? "reduced" : "full"}
+      data-motion={prefersReducedMotionForShell ? "reduced" : "full"}
       data-shell-profile={profile.kind}
+      data-theme-preset={settings.themePreset}
       ref={sceneRef}
       style={createShellStyle(profile)}
     >
       <div className="shell-scene__frame">
         <AmbientBackground
-          prefersReducedMotion={prefersReducedMotion}
+          palette={ambientPalette}
+          prefersReducedMotion={prefersReducedMotionForShell}
           profileKind={profile.kind}
         />
         <StatusBar profile={profile} />
@@ -117,7 +139,7 @@ export function AdaptiveShellFoundation() {
                         currentState,
                         originRect,
                         {
-                          prefersReducedMotion,
+                          prefersReducedMotion: prefersReducedMotionForShell,
                           supportsViewTransitions: hasNativeViewTransitions,
                         },
                       ),
@@ -142,7 +164,7 @@ export function AdaptiveShellFoundation() {
                         currentState,
                         originRect,
                         {
-                          prefersReducedMotion,
+                          prefersReducedMotion: prefersReducedMotionForShell,
                           supportsViewTransitions: hasNativeViewTransitions,
                         },
                       ),
@@ -162,7 +184,7 @@ export function AdaptiveShellFoundation() {
             onTransitionComplete={() => {
               setRuntimeState((currentState) =>
                 completeRuntimeTransition(currentState, {
-                  prefersReducedMotion,
+                  prefersReducedMotion: prefersReducedMotionForShell,
                   supportsViewTransitions: hasNativeViewTransitions,
                 }),
               );
@@ -185,7 +207,7 @@ export function AdaptiveShellFoundation() {
                         () => {
                           setRuntimeState((currentState) =>
                             closeRuntimeApp(currentState, {
-                              prefersReducedMotion,
+                              prefersReducedMotion: prefersReducedMotionForShell,
                               supportsViewTransitions: hasNativeViewTransitions,
                             }),
                           );
