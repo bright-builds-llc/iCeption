@@ -105,7 +105,8 @@ export function createStoredNote(
   },
 ): Note {
   const createId =
-    maybeOptions?.createId ?? crypto.randomUUID;
+    maybeOptions?.createId ??
+    (() => crypto.randomUUID());
   const now =
     maybeOptions?.now ??
     (() => new Date().toISOString());
