@@ -3,8 +3,7 @@
 ## Milestones
 
 - ✅ **v1 iPhone Web App Foundation** — Phases 1-8, shipped 2026-04-05. Archive: [.planning/milestones/v1-ROADMAP.md](./milestones/v1-ROADMAP.md)
-- 🚧 **v1.1 Core Apps & Platform Foundations** — Phases 9-14, planned
-- ⚠️ **v1.1 Core Apps & Platform Foundations** — Phase 15 gap-closure follow-up pending
+- 🚧 **v1.1 Core Apps & Platform Foundations** — Phases 9-15 complete, milestone re-audit pending
 
 ## Overview
 
@@ -152,7 +151,7 @@
 
 **Goal:** Make shared platform primitives visibly and consistently consumed by `Settings`, `Notes`, and `Browser`.
 
-**Status:** Planned (gap-closure follow-up)
+**Status:** Complete (verified 2026-04-08)
 
 **Requirements:** PLAT-03
 
@@ -199,7 +198,7 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-08 after v1.1 gap-closure planning*
+*Roadmap updated: 2026-04-08 after Phase 15 completion*
 *Phase 13 completed: 2026-04-07*
 *Phase 12 completed: 2026-04-07*
 *Phase 11 completed: 2026-04-06*
