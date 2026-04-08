@@ -5,7 +5,7 @@
 See: `.planning/PROJECT.md` (updated 2026-04-06)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Milestone audit ready
+**Current focus:** Gap-closure planning
 
 ## Artifact Status
 
@@ -17,14 +17,14 @@ See: `.planning/PROJECT.md` (updated 2026-04-06)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.1 requirements defined and mapped |
-| ROADMAP.md | Active | Phases 9-14 completed; v1.1 milestone is ready for audit |
-| STATE.md | Active | Updated after Phase 14 verification |
+| ROADMAP.md | Active | Phase 15 added to close the `PLAT-03` milestone gap |
+| STATE.md | Active | Updated after gap-closure planning |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Run the `v1.1` milestone audit now that all roadmap phases are complete.
+- Plan and execute **Phase 15: Platform Usage Truthfulness Cleanup**.
 
 ### Most recently completed phase
 
@@ -32,7 +32,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-06)
 
 ### Planned next phase
 
-- None. The `v1.1` roadmap phase set is complete.
+- **Phase 15: Platform Usage Truthfulness Cleanup** — close the `PLAT-03` truthfulness gap and adjacent low-risk metadata debt.
 
 ## Notes
 
@@ -46,12 +46,13 @@ See: `.planning/PROJECT.md` (updated 2026-04-06)
 - Phase 12 established local-only Notes persistence, a real Notes app, and browser-verified reopen behavior with honest no-sync messaging.
 - Phase 13 established the managed Browser app with a truthful embedded/fallback model and deterministic browser verification.
 - Phase 14 locked the final integrated quality bar across pages, platform metadata, Settings, Notes, and Browser.
+- The remaining `v1.1` blocker is platform truthfulness: the platform layer needs to be consumed more consistently in Notes and Browser app-side code.
 
 ## Session
 
 **Last Date:** 2026-04-07T22:29:53Z
-**Stopped At:** Phase 14 complete
-**Resume File:** .planning/phases/14-verification-and-app-integration/14-VERIFICATION.md
+**Stopped At:** Gap-closure phase added after `v1.1` audit
+**Resume File:** .planning/v1.1-v1.1-MILESTONE-AUDIT.md
 
 ---
-*State updated: 2026-04-07 after Phase 14 completion*
+*State updated: 2026-04-08 after `v1.1` gap-closure planning*

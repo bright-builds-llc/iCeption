@@ -4,6 +4,7 @@
 
 - ✅ **v1 iPhone Web App Foundation** — Phases 1-8, shipped 2026-04-05. Archive: [.planning/milestones/v1-ROADMAP.md](./milestones/v1-ROADMAP.md)
 - 🚧 **v1.1 Core Apps & Platform Foundations** — Phases 9-14, planned
+- ⚠️ **v1.1 Core Apps & Platform Foundations** — Phase 15 gap-closure follow-up pending
 
 ## Overview
 
@@ -26,6 +27,7 @@
 | 12 | Notes App | Deliver local-only notes with clear persistence boundaries and honest no-sync messaging | NOTE-01, NOTE-02, NOTE-03, NOTE-04 | 5 |
 | 13 | Managed Browser App | Deliver a truthful, limited browser surface for curated/embed-safe destinations with graceful fallback | BROW-01, BROW-02, BROW-03, BROW-04 | 5 |
 | 14 | Verification and App Integration | Prove the new page/app/platform flows together and lock the milestone quality bar | PLAT-03, QUAL-03, QUAL-04 | 4 |
+| 15 | Platform Usage Truthfulness Cleanup | Make shared platform primitives visibly and consistently consumed by Settings, Notes, and Browser | PLAT-03 | 3 |
 
 ## Active Phases
 
@@ -146,6 +148,26 @@
 3. Shared platform primitives are actively used by `Settings`, `Notes`, and `Browser`.
 4. The new app/platform flows feel integrated rather than like isolated feature islands.
 
+### Phase 15: Platform Usage Truthfulness Cleanup
+
+**Goal:** Make shared platform primitives visibly and consistently consumed by `Settings`, `Notes`, and `Browser`.
+
+**Status:** Planned (gap-closure follow-up)
+
+**Requirements:** PLAT-03
+
+**Gap Closure:** Closes the `v1.1` milestone audit gap where `PLAT-03` is only partially proven because Notes still hardcodes its storage app id, Browser consumes only destination metadata in app-side code, and Settings currently duplicates Browser management rows.
+
+**Why fifteenth:**
+- The gap is narrow and should be closed with one focused cleanup phase rather than a broader milestone rewrite.
+- The user-facing milestone behaviors already work; what remains is platform truthfulness and metadata-consumption consistency.
+- This phase can also absorb the low-risk duplicate-row and Browser switching test debt while touching the same files.
+
+**Success criteria:**
+1. `Notes` consumes shared app/platform metadata instead of hardcoded app identity for its storage wiring.
+2. `Browser` visibly consumes the shared platform layer in app-side code, not only destination metadata.
+3. The duplicate Browser management row issue is resolved and the Browser switching coverage is tightened.
+
 ## Requirement Coverage
 
 | Requirement | Phase | Status |
@@ -177,7 +199,7 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-06 for v1.1 milestone initialization*
+*Roadmap updated: 2026-04-08 after v1.1 gap-closure planning*
 *Phase 13 completed: 2026-04-07*
 *Phase 12 completed: 2026-04-07*
 *Phase 11 completed: 2026-04-06*

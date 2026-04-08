@@ -7,41 +7,41 @@
 
 ### Home Screen
 
-- [ ] **HOME-05**: User can navigate between multiple home-screen pages in portrait mode.
-- [ ] **HOME-06**: User returning home from an app lands back on the same home-screen page they launched from.
-- [ ] **HOME-07**: User can visually understand which home-screen page is active through iPhone-like page indicators.
+- [x] **HOME-05**: User can navigate between multiple home-screen pages in portrait mode.
+- [x] **HOME-06**: User returning home from an app lands back on the same home-screen page they launched from.
+- [x] **HOME-07**: User can visually understand which home-screen page is active through iPhone-like page indicators.
 
 ### Settings
 
-- [ ] **SETT-01**: User can open `Settings` from the home screen as a real implemented app.
-- [ ] **SETT-02**: User can change core openOS preferences in `Settings` and see them apply to the experience.
-- [ ] **SETT-03**: User’s openOS settings persist locally across relaunches.
-- [ ] **SETT-04**: User can access a first internal app/platform management surface from `Settings`, driven by shared app metadata.
+- [x] **SETT-01**: User can open `Settings` from the home screen as a real implemented app.
+- [x] **SETT-02**: User can change core openOS preferences in `Settings` and see them apply to the experience.
+- [x] **SETT-03**: User’s openOS settings persist locally across relaunches.
+- [x] **SETT-04**: User can access a first internal app/platform management surface from `Settings`, driven by shared app metadata.
 
 ### Notes
 
-- [ ] **NOTE-01**: User can open `Notes` from the home screen as a real implemented app.
-- [ ] **NOTE-02**: User can create, edit, and delete notes.
-- [ ] **NOTE-03**: User can reopen previously saved notes from a notes list, and those notes persist locally across relaunches.
-- [ ] **NOTE-04**: User sees clear local-only / no-sync messaging in `Notes`.
+- [x] **NOTE-01**: User can open `Notes` from the home screen as a real implemented app.
+- [x] **NOTE-02**: User can create, edit, and delete notes.
+- [x] **NOTE-03**: User can reopen previously saved notes from a notes list, and those notes persist locally across relaunches.
+- [x] **NOTE-04**: User sees clear local-only / no-sync messaging in `Notes`.
 
 ### Browser
 
-- [ ] **BROW-01**: User can open `Browser` from the home screen as a real implemented app.
-- [ ] **BROW-02**: User can load curated/embed-safe destinations inside a managed iframe browser surface.
-- [ ] **BROW-03**: User sees a graceful blocked-embed state with an option to open externally when a destination cannot be embedded.
-- [ ] **BROW-04**: User can navigate among a small curated set of browser destinations from within the app.
+- [x] **BROW-01**: User can open `Browser` from the home screen as a real implemented app.
+- [x] **BROW-02**: User can load curated/embed-safe destinations inside a managed iframe browser surface.
+- [x] **BROW-03**: User sees a graceful blocked-embed state with an option to open externally when a destination cannot be embedded.
+- [x] **BROW-04**: User can navigate among a small curated set of browser destinations from within the app.
 
 ### Platform
 
-- [ ] **PLAT-01**: Developers can define built-in app metadata through reusable platform primitives instead of ad hoc shell wiring.
-- [ ] **PLAT-02**: Apps can declare page placement, settings participation, and storage namespace through shared platform primitives.
-- [ ] **PLAT-03**: Shared platform primitives are actively used by `Settings`, `Notes`, and `Browser` rather than existing as unused abstractions.
+- [x] **PLAT-01**: Developers can define built-in app metadata through reusable platform primitives instead of ad hoc shell wiring.
+- [x] **PLAT-02**: Apps can declare page placement, settings participation, and storage namespace through shared platform primitives.
+- [x] **PLAT-03**: Shared platform primitives are actively used by `Settings`, `Notes`, and `Browser` rather than existing as unused abstractions.
 
 ### Verification
 
-- [ ] **QUAL-03**: Automated browser UI tests verify multi-page home navigation and launch/return behavior for `Settings`, `Notes`, and `Browser`.
-- [ ] **QUAL-04**: Automated tests verify Notes local persistence/local-only messaging and Browser blocked-embed fallback at a basic level.
+- [x] **QUAL-03**: Automated browser UI tests verify multi-page home navigation and launch/return behavior for `Settings`, `Notes`, and `Browser`.
+- [x] **QUAL-04**: Automated tests verify Notes local persistence/local-only messaging and Browser blocked-embed fallback at a basic level.
 
 ## v2 Requirements
 
@@ -95,7 +95,7 @@
 | BROW-02 | Phase 13 | Complete |
 | BROW-03 | Phase 13 | Complete |
 | BROW-04 | Phase 13 | Complete |
-| PLAT-03 | Phase 14 | Complete |
+| PLAT-03 | Phase 15 | Pending |
 | QUAL-03 | Phase 14 | Complete |
 | QUAL-04 | Phase 14 | Complete |
 
@@ -106,4 +106,4 @@
 
 ---
 *Requirements defined: 2026-04-06*
-*Last updated: 2026-04-07 after phase 14 completion*
+*Last updated: 2026-04-08 after v1.1 gap-closure planning*
