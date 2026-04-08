@@ -25,6 +25,14 @@ export type RuntimeApp = RuntimeAppDefinition;
 
 export const appRegistry: RuntimeApp[] = builtInAppDefinitions;
 
+function getCanonicalRuntimeAppKey(
+  app: RuntimeApp,
+): string {
+  return app.launchSurface === "coming-soon"
+    ? app.id
+    : app.launchSurface;
+}
+
 export function getRuntimeApp(
   appId: string,
   maybeApps: RuntimeApp[] = appRegistry,
@@ -68,6 +76,42 @@ export function listRuntimeAppsForSettings(
   return listSettingsVisibleApps(maybeApps);
 }
 
+export function listCanonicalRuntimeApps(
+  maybeApps: RuntimeApp[] = appRegistry,
+): RuntimeApp[] {
+  const seenKeys = new Set<string>();
+
+  return maybeApps.filter((app) => {
+    const key = getCanonicalRuntimeAppKey(app);
+
+    if (seenKeys.has(key)) {
+      return false;
+    }
+
+    seenKeys.add(key);
+    return true;
+  });
+}
+
+export function getCanonicalRuntimeAppForLaunchSurface(
+  launchSurface: RuntimeAppLaunchSurface,
+  maybeApps: RuntimeApp[] = appRegistry,
+): RuntimeApp | null {
+  return (
+    listCanonicalRuntimeApps(maybeApps).find(
+      (app) => app.launchSurface === launchSurface,
+    ) ?? null
+  );
+}
+
+export function listCanonicalRuntimeAppsForSettings(
+  maybeApps: RuntimeApp[] = appRegistry,
+): RuntimeApp[] {
+  return listCanonicalRuntimeApps(
+    listRuntimeAppsForSettings(maybeApps),
+  );
+}
+
 export function listRuntimeStorageManagedApps(
   maybeApps: RuntimeApp[] = appRegistry,
 ): RuntimeApp[] {
@@ -79,4 +123,14 @@ export function getRuntimeAppStorageNamespace(
   maybeApps: RuntimeApp[] = appRegistry,
 ): string | null {
   return getAppStorageNamespace(appId, maybeApps);
+}
+
+export function getCanonicalRuntimeAppStorageNamespace(
+  launchSurface: RuntimeAppLaunchSurface,
+  maybeApps: RuntimeApp[] = appRegistry,
+): string | null {
+  return getCanonicalRuntimeAppForLaunchSurface(
+    launchSurface,
+    maybeApps,
+  )?.storage.namespace ?? null;
 }

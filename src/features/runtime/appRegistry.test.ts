@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   appRegistry,
+  getCanonicalRuntimeAppForLaunchSurface,
+  getCanonicalRuntimeAppStorageNamespace,
   getRuntimeApp,
   listRuntimeAppsByPlacement,
   getRuntimeAppStorageNamespace,
+  listCanonicalRuntimeAppsForSettings,
   listRuntimeAppsForSettings,
   listRuntimeStorageManagedApps,
 } from "./appRegistry";
@@ -81,6 +84,23 @@ describe("appRegistry", () => {
     ]);
   });
 
+  it("deduplicates settings-managed apps by canonical app identity", () => {
+    // Arrange
+
+    // Act
+    const result = listCanonicalRuntimeAppsForSettings(
+      appRegistry,
+    ).map((app) => app.id);
+
+    // Assert
+    expect(result).toEqual([
+      "notes",
+      "calculator",
+      "settings",
+      "browser-grid",
+    ]);
+  });
+
   it("exposes storage-managed milestone apps through runtime selectors", () => {
     // Arrange
 
@@ -100,6 +120,18 @@ describe("appRegistry", () => {
     ]);
   });
 
+  it("returns the canonical Browser app for the shared launch surface", () => {
+    // Arrange
+
+    // Act
+    const result =
+      getCanonicalRuntimeAppForLaunchSurface("browser");
+
+    // Assert
+    expect(result?.id).toBe("browser-grid");
+    expect(result?.launchSurface).toBe("browser");
+  });
+
   it("resolves runtime storage namespaces for milestone apps", () => {
     // Arrange
 
@@ -117,6 +149,22 @@ describe("appRegistry", () => {
       "openos.apps.settings",
       "openos.apps.browser-grid",
       "openos.apps.browser",
+    ]);
+  });
+
+  it("resolves canonical runtime storage namespaces by launch surface", () => {
+    // Arrange
+
+    // Act
+    const result = [
+      getCanonicalRuntimeAppStorageNamespace("notes"),
+      getCanonicalRuntimeAppStorageNamespace("browser"),
+    ];
+
+    // Assert
+    expect(result).toEqual([
+      "openos.apps.notes",
+      "openos.apps.browser-grid",
     ]);
   });
 });

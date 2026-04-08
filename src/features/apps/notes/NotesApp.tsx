@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { createAppStorageNamespace } from "../../platform/appStorage";
+import {
+  getCanonicalRuntimeAppForLaunchSurface,
+  getCanonicalRuntimeAppStorageNamespace,
+} from "../../runtime/appRegistry";
 import {
   createStoredNote,
   deleteStoredNote,
@@ -8,8 +11,30 @@ import {
 } from "./notesStorage";
 import "./notes.css";
 
-const NOTES_APP_ID = "notes";
-const NOTES_NAMESPACE = createAppStorageNamespace(NOTES_APP_ID);
+function getNotesRuntimeApp() {
+  const maybeNotesApp =
+    getCanonicalRuntimeAppForLaunchSurface("notes");
+
+  if (maybeNotesApp === null) {
+    throw new Error("Notes runtime metadata is missing.");
+  }
+
+  return maybeNotesApp;
+}
+
+const NOTES_RUNTIME_APP = getNotesRuntimeApp();
+function getNotesStorageNamespace() {
+  const maybeNotesStorageNamespace =
+    getCanonicalRuntimeAppStorageNamespace("notes");
+
+  if (maybeNotesStorageNamespace === null) {
+    throw new Error("Notes storage namespace metadata is missing.");
+  }
+
+  return maybeNotesStorageNamespace;
+}
+
+const NOTES_NAMESPACE = getNotesStorageNamespace();
 
 type NotesStorageLike = Pick<
   Storage,
@@ -87,7 +112,9 @@ export function NotesApp() {
       <header className="notes-app__hero">
         <div>
           <p className="notes-app__eyebrow">openOS</p>
-          <h1 className="notes-app__title">Notes</h1>
+          <h1 className="notes-app__title">
+            {NOTES_RUNTIME_APP.label}
+          </h1>
         </div>
         <button
           className="notes-app__create"

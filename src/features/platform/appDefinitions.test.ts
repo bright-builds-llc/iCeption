@@ -96,6 +96,34 @@ describe("appDefinitions", () => {
     ]);
   });
 
+  it("uses one Browser launch surface across grid and dock entries", () => {
+    // Arrange
+    const browserEntries = builtInAppDefinitions.filter((app) =>
+      ["browser-grid", "browser"].includes(app.id),
+    );
+
+    // Act
+    const result = browserEntries.map((app) => ({
+      id: app.id,
+      launchSurface: app.launchSurface,
+      placement: app.placement,
+    }));
+
+    // Assert
+    expect(result).toEqual([
+      {
+        id: "browser-grid",
+        launchSurface: "browser",
+        placement: "grid",
+      },
+      {
+        id: "browser",
+        launchSurface: "browser",
+        placement: "dock",
+      },
+    ]);
+  });
+
   it("returns a typed definition through the helper", () => {
     // Arrange
     const definition = defineRuntimeApp({
