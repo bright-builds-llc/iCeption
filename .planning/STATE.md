@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: Core Apps & Platform Foundations
-status: milestone_complete
-stopped_at: v1.1 archived and tagged locally
-last_updated: "2026-04-09T00:00:00Z"
+milestone: v1.2
+milestone_name: Notes, Browser & Platform Growth
+status: defining_requirements
+stopped_at: Milestone v1.2 started
+last_updated: "2026-04-09T08:08:34Z"
 progress:
-  total_phases: 7
-  completed_phases: 7
-  total_plans: 21
-  completed_plans: 21
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State: openOS
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Planning the next milestone
+**Current focus:** Defining v1.2 requirements and roadmap
 
 ## Artifact Status
 
@@ -28,26 +28,26 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 |----------|--------|-------|
 | PROJECT.md | Complete | Initial project context committed |
 | config.json | Complete | Workflow set to YOLO, fine granularity, parallel, research/check/verifier on |
-| research/ | Complete | Stack, features, architecture, pitfalls, and summary written and committed |
+| research/ | Active | Refreshed for v1.2 planning |
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
-| REQUIREMENTS.md | Archived | `v1.1` requirements moved to milestones; next milestone will regenerate this file |
-| ROADMAP.md | Active | Completed milestones collapsed to archive links |
-| STATE.md | Active | Updated after v1.1 archival |
+| REQUIREMENTS.md | Missing | To be regenerated for v1.2 |
+| ROADMAP.md | Active | Ready for v1.2 roadmap creation |
+| STATE.md | Active | Reset for v1.2 startup |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start the next milestone with `$gsd-new-milestone`.
+- Define v1.2 requirements and create the roadmap.
 
 ### Most recently completed phase
 
-- **Milestone v1.1: Core Apps & Platform Foundations** — complete, audited, and archived.
+- **Milestone v1.1: Core Apps & Platform Foundations** — complete, audited, archived, and preserved under `.planning/milestones/`.
 
 ### Planned next phase
 
-- None until the next milestone is defined.
+- None until the v1.2 roadmap is written.
 
 ## Notes
 
@@ -61,14 +61,15 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 - Phase 12 established local-only Notes persistence, a real Notes app, and browser-verified reopen behavior with honest no-sync messaging.
 - Phase 13 established the managed Browser app with a truthful embedded/fallback model and deterministic browser verification.
 - Phase 14 locked the final integrated quality bar across pages, platform metadata, Settings, Notes, and Browser.
-- `v1.1` is archived with a passing milestone audit.
-- The remaining low-risk audit note is Browser dock-entry launcher-path coverage, which is non-blocking and can be folded into future Browser work.
+- Historical phase directories were archived to `.planning/milestones/v1.1-phases/` before starting the next milestone.
+- The remaining low-risk audit note is Browser dock-entry launcher-path coverage, which can be folded into future Browser work.
+- v1.2 focus is Notes expansion, careful Browser expansion, and app distribution groundwork.
 
 ## Session
 
-**Last Date:** 2026-04-09T00:00:00Z
-**Stopped At:** v1.1 milestone archived
-**Resume File:** .planning/MILESTONES.md
+**Last Date:** 2026-04-09T08:08:34Z
+**Stopped At:** v1.2 startup
+**Resume File:** .planning/PROJECT.md
 
 ---
-*State updated: 2026-04-09 after archiving v1.1*
+*State updated: 2026-04-09 after starting v1.2 milestone*

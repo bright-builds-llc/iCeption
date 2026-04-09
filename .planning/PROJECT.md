@@ -10,6 +10,15 @@ Longer term, the project still aims to become an open platform for browser-nativ
 
 When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
 
+## Current Milestone: v1.2 Notes, Browser & Platform Growth
+
+**Goal:** Expand openOS into a more useful daily system by deepening Notes, broadening Browser carefully, and laying the first contributor-facing app distribution groundwork without weakening the current truthfulness bar.
+
+**Target features:**
+- searchable, organized Notes with local structure beyond a flat list
+- more capable Browser navigation, including direct URL entry, while keeping embed vs external behavior honest
+- repo-driven app submission foundations plus a first in-product app catalog surface
+
 ## Current State
 
 - **Shipped version:** `v1.1` on 2026-04-09
@@ -32,21 +41,24 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 ### Active
 
 - [ ] Users can search notes and organize them with folders or tags.
-- [ ] Users can sync notes across devices/accounts and use richer editing than plain text.
-- [ ] Users can browse beyond the current curated/embed-safe Browser scope without making dishonest product claims.
-- [ ] Contributors can submit, browse, and install virtual apps through a repo-driven platform flow.
+- [ ] Users can enter destinations directly in Browser and browse beyond the current curated list without dishonest capability claims.
+- [ ] Contributors can submit apps through a repo-driven review workflow and users can browse a first in-product app catalog.
 
 ### Out of Scope
 
 - Landscape mode until the portrait iPhone experience remains strong as the product grows.
 - Widgets, notifications, and lock screen system surfaces before the app platform and core shell mature further.
 - Literal Apple logos and related marks.
+- Notes sync/accounts until local search and organization are proven.
+- Rich-text Notes editing until the upgraded Notes information model settles.
+- Browser tabs and Safari-parity browsing claims.
+- Arbitrary app install escape hatches until submission and catalog foundations exist.
 
 ## Context
 
 `v1` proved the install boundary, shell fidelity, shared launcher/runtime path, motion system, and first real app. `v1.1` then validated that openOS can grow carefully without breaking the illusion: the home screen can span multiple pages, real built-in apps can share a platform contract, and browser constraints can be handled truthfully instead of hidden behind fake general-purpose browsing claims.
 
-The next milestone is still intentionally open. The strongest available directions are expanding Notes, broadening Browser carefully, and turning the internal app-platform layer into something contributors can build against without rewriting the current runtime seams.
+`v1.2` is focused rather than broad. The goal is to make Notes feel more useful, make Browser more capable without lying about the web, and start turning the internal app-platform layer into a contributor-facing distribution surface. The milestone should still avoid backend-heavy sync scope and any claim that openOS already behaves like a full Safari replacement.
 
 ## Constraints
 
@@ -70,9 +82,9 @@ The next milestone is still intentionally open. The strongest available directio
 
 ## Next Milestone Goals
 
-- Decide whether the next milestone focuses first on Notes expansion, Browser expansion, or platform distribution.
-- Preserve the truthful install-and-launcher-path quality bar while adding broader app capability.
-- Introduce the next milestone explicitly through `$gsd-new-milestone` rather than letting post-`v1.1` work drift.
+- Ship Notes search and organization without taking on sync/accounts yet.
+- Broaden Browser navigation carefully enough that users can type destinations directly and still get truthful fallback behavior.
+- Establish app submission and app-catalog foundations without committing to arbitrary app installation yet.
 
 <details>
 <summary>Archived milestone framing</summary>
@@ -84,4 +96,4 @@ The next milestone is still intentionally open. The strongest available directio
 </details>
 
 ---
-*Last updated: 2026-04-09 after completing v1.1 milestone*
+*Last updated: 2026-04-09 after starting v1.2 milestone*
