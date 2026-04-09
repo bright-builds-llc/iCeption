@@ -3,10 +3,10 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
 status: defining_requirements
-stopped_at: Milestone v1.2 started
+stopped_at: v1.2 roadmap created
 last_updated: "2026-04-09T08:08:34Z"
 progress:
-  total_phases: 0
+  total_phases: 5
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Defining v1.2 requirements and roadmap
+**Current focus:** Ready to discuss and plan Phase 16
 
 ## Artifact Status
 
@@ -31,15 +31,15 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 | research/ | Active | Refreshed for v1.2 planning |
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
-| REQUIREMENTS.md | Missing | To be regenerated for v1.2 |
-| ROADMAP.md | Active | Ready for v1.2 roadmap creation |
-| STATE.md | Active | Reset for v1.2 startup |
+| REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
+| ROADMAP.md | Active | v1.2 phases 16-20 created |
+| STATE.md | Active | Updated after v1.2 roadmap creation |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Define v1.2 requirements and create the roadmap.
+- Start implementation planning at **Phase 16: Notes Search and Organization**.
 
 ### Most recently completed phase
 
@@ -47,7 +47,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 ### Planned next phase
 
-- None until the v1.2 roadmap is written.
+- **Phase 16: Notes Search and Organization** — make Notes searchable and structurally organized.
 
 ## Notes
 
@@ -64,12 +64,13 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 - Historical phase directories were archived to `.planning/milestones/v1.1-phases/` before starting the next milestone.
 - The remaining low-risk audit note is Browser dock-entry launcher-path coverage, which can be folded into future Browser work.
 - v1.2 focus is Notes expansion, careful Browser expansion, and app distribution groundwork.
+- The milestone now spans Phases 16-20.
 
 ## Session
 
 **Last Date:** 2026-04-09T08:08:34Z
-**Stopped At:** v1.2 startup
+**Stopped At:** v1.2 roadmap created
 **Resume File:** .planning/PROJECT.md
 
 ---
-*State updated: 2026-04-09 after starting v1.2 milestone*
+*State updated: 2026-04-09 after creating the v1.2 roadmap*
