@@ -1,60 +1,55 @@
-# Features Research: v1.1 Core Apps & Platform Foundations
+# Features Research: v1.2 Notes, Browser & Platform Growth
 
-**Researched:** 2026-04-06
+**Researched:** 2026-04-09
 
-## Table Stakes
+## Notes Expansion
 
-### Settings
-- open as a real app from the launcher
-- expose openOS-specific preferences, not generic OS cloning
-- preference changes apply immediately where appropriate
-- preferences persist locally
+### Table Stakes
 
-### Notes
-- note list
-- create note
-- edit note
-- delete note
-- reopen saved notes after relaunch
-- explicit local-only / no-sync warning
+- Search notes by meaningful text, not just browse a flat list
+- Organize notes by folder and/or tags
+- Keep organization and search persistent across relaunches
 
-### Browser
-- open as a real app from the launcher
-- curated destinations rather than arbitrary web
-- managed iframe surface
-- clear blocked-embed state
-- graceful external-open fallback
+### Differentiators
 
-### Home Screen Pages
-- multiple pages
-- page indicator / page awareness
-- returning home lands on the correct page
-- page layout still feels iPhone-like, not like arbitrary tabs
+- Search that feels instant on-device
+- Organization model that still feels native to openOS instead of like a generic CRUD admin tool
 
-### Platform Primitives
-- shared app metadata beyond a single flat registry
-- per-app settings/storage conventions
-- internal app management or diagnostics surface in Settings
+### Defer
 
-## Differentiators
+- Sync/accounts
+- Rich-text editing beyond plain text
 
-- Settings explicitly controls openOS-specific preferences instead of imitating iOS system settings indiscriminately
-- Notes is honest about local persistence and lack of sync
-- Browser is constrained and truthful rather than pretending to browse anything
-- Platform primitives are designed around future app growth instead of one-off app wiring
+## Browser Expansion
 
-## Anti-Features
+### Table Stakes
 
-- full general-purpose browser claims
-- sync/cloud accounts in Notes for this milestone
-- folders/search/rich text in Notes unless basic CRUD is already solved cleanly
-- app marketplace / public submission flow in this milestone
-- arbitrary iframe embedding with no blocked-site fallback
+- Enter a destination directly instead of relying only on pre-seeded cards
+- Broaden browsing beyond the current fixed curated set
+- Keep blocked/embed-safe truthfulness visible when sites cannot render in-app
 
-## Complexity Notes
+### Differentiators
 
-- `Settings`: medium
-- `Notes`: medium
-- `Browser`: medium-high due to embedding constraints and fallback UX
-- multi-page home screens: medium-high because it touches runtime, layout, and navigation expectations
-- platform primitives: medium-high because under-scoping causes churn later, but over-scoping wastes time now
+- Graceful navigation model that preserves the current honesty about embed limits
+- Clear recent/history affordances without pretending to be a full Safari clone
+
+### Defer
+
+- Tabs
+- Full Safari parity
+
+## Platform / Distribution Growth
+
+### Table Stakes
+
+- Contributors can define submitted apps through a repo-driven workflow
+- The product can browse a first app catalog surface from shared app metadata
+
+### Differentiators
+
+- Catalog and submission model align with the existing openOS runtime contract instead of becoming a separate system
+
+### Defer
+
+- Arbitrary installation escape hatch
+- Public trust/reputation systems, ratings, or marketplace economics

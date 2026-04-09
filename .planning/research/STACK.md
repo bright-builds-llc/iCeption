@@ -1,71 +1,39 @@
-# Stack Research: v1.1 Core Apps & Platform Foundations
+# Stack Research: v1.2 Notes, Browser & Platform Growth
 
-**Researched:** 2026-04-06  
-**Scope:** `Settings`, `Notes`, managed-iframe `Browser`, multi-page home screens, and first app-platform primitives
+**Researched:** 2026-04-09
+**Scope:** Notes search/organization, careful Browser expansion, and app-distribution groundwork
 
-## Recommendation
+## Current Stack Strengths
 
-Keep the current stack:
-- React 19
-- Vite 8
-- TypeScript 6
-- Vitest 4
-- Playwright 1.59
+- React 19 + Vite 8 + TypeScript 6 already support the current shell/app runtime cleanly.
+- Notes and Browser already have isolated feature modules, which makes incremental expansion feasible.
+- The internal platform layer already models app identity, settings participation, and storage namespaces.
+- Playwright coverage already exists for launcher-path app flows, which is a strong base for `v1.2` verification.
 
-Add **no new framework-level dependency by default** for `v1.1`.
+## Recommended Stack Direction
 
-## Why
+- Keep the existing frontend stack; no framework change is needed for `v1.2`.
+- Keep Notes search and organization local-first. Start with in-browser indexing/filtering over existing note content rather than adding backend search infrastructure.
+- Keep Browser expansion metadata- and truthfulness-driven. New navigation should still route through an explicit browsing model that can decide between embedded and external handling.
+- Keep app-distribution groundwork repo-driven at first. Prefer checked-in app metadata/manifests and validation helpers before any server-backed marketplace or installation backend.
 
-- The existing codebase already has the right seams: registry-driven app identity, shared app surfaces, motion/navigation state, and browser verification.
-- `Settings`, `Notes`, multi-page home screens, and internal platform primitives are all application-logic problems, not missing-stack problems.
-- The managed-iframe `Browser` is constrained more by web embedding policy than by missing libraries.
+## Likely Additions
 
-## Storage Recommendation
+- Notes:
+  - local note metadata for folders and/or tags
+  - search helpers over title/body and note metadata
+- Browser:
+  - URL parsing/normalization helper
+  - browser history/recent-destination state, likely local and app-scoped
+  - expanded destination policy model beyond fixed curated cards
+- Platform:
+  - app manifest schema for submitted apps
+  - validation utilities for submission metadata
+  - catalog data source and selectors
 
-Use **IndexedDB** for Notes persistence.
+## What Not To Add Yet
 
-Reason:
-- MDN describes IndexedDB as appropriate for significant structured client-side data, while Web Storage is better suited to smaller/simple data.
-- Notes need create/edit/delete/list/reopen behavior and future growth toward search/folders.
-- Preferences can still live in simpler local persistence if already established, but Notes should use a dedicated persistence layer.
-
-## Iframe / Browser Recommendation
-
-Use the platform `iframe` element directly with a small managed wrapper.
-
-Reason:
-- The main challenge is not rendering an iframe; it is handling sites that block embedding via `X-Frame-Options` and CSP `frame-ancestors`.
-- The Browser app should therefore be a limited surface for curated/embed-safe destinations, not a general browser.
-- Add graceful fallback to open externally when embedding is blocked.
-
-## Platform Primitive Recommendation
-
-Keep platform primitives internal and typed:
-- app manifest/metadata shape
-- page placement and launcher model
-- settings schema / app settings registration
-- storage namespace conventions
-- internal app management surface for Settings
-
-No plugin runtime or public contributor workflow yet in `v1.1`.
-
-## Avoid Adding
-
-- No state-management framework just for this milestone
-- No database library unless IndexedDB ergonomics become a real blocker
-- No full routing framework
-- No service-worker/offline-first rewrite
-- No browser engine abstraction beyond the managed iframe wrapper
-
-## Suggested Integration Points
-
-- `Settings`: shared preference store + app/platform settings registry
-- `Notes`: IndexedDB-backed notes repository + local-only warning banner
-- `Browser`: managed iframe host + curated source list + blocked-embed fallback
-- home pages: extend runtime app model with page placement and page state
-
-## Risks
-
-- Raw IndexedDB can be verbose; keep the storage adapter small and local to Notes.
-- Browser app scope can balloon if it starts pretending to be a general browser.
-- Platform primitives can over-abstract too early; keep them narrowly driven by the three target apps.
+- Full backend sync/accounts for Notes
+- Rich-text editor framework unless requirements explicitly force it
+- Full browser-engine claims or Safari parity
+- Arbitrary app install escape hatches before submission and catalog foundations are proven

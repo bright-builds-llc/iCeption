@@ -1,73 +1,44 @@
-# Architecture Research: v1.1 Core Apps & Platform Foundations
+# Architecture Research: v1.2 Notes, Browser & Platform Growth
 
-**Researched:** 2026-04-06
+**Researched:** 2026-04-09
 
-## Existing Strengths to Reuse
+## Recommended Build Order
 
-- shared app registry and runtime launch path
-- shared app surface and motion system
-- browser/install entry split
-- browser verification harness
+1. Expand Notes first.
+   - It already has a local repository layer and a real app route.
+   - Search and organization can build on existing note storage without reopening platform or install surfaces.
 
-## Recommended Architecture Direction
+2. Expand Browser second.
+   - It already has a typed destination model and truthful fallback path.
+   - URL entry and broader browsing should extend that model rather than replace it.
 
-### 1. Extend the app model, do not bypass it
+3. Build app-submission foundations third.
+   - App distribution should reuse the Phase 10 platform contract instead of inventing parallel metadata.
 
-Add new typed metadata for:
-- home-screen page placement
-- app settings capability
-- app storage namespace
-- app management visibility
+4. Build the first catalog surface fourth.
+   - The catalog should consume the same submission metadata that contributor workflows produce.
 
-This should remain an evolution of the existing runtime app model, not a parallel platform model.
+5. Finish with integrated verification.
+   - Notes search/organization, Browser navigation truthfulness, and platform/catalog flows need one final end-to-end lock.
 
-### 2. Build a small platform layer before the apps
+## Integration Points
 
-Introduce internal primitives used by `Settings`, `Notes`, and `Browser`:
-- app/page placement selector(s)
-- preference store contract
-- app settings registration
-- storage contract
+- Notes:
+  - `notesModel.ts`
+  - `notesStorage.ts`
+  - `NotesApp.tsx`
+- Browser:
+  - `browserDestinations.ts`
+  - `BrowserApp.tsx`
+  - runtime selectors in `appRegistry.ts`
+- Platform:
+  - `appDefinitions.ts`
+  - `appRegistry.ts`
+  - future app-manifest/catalog modules under platform/runtime features
 
-Then plug each app into that layer.
+## Architectural Rules
 
-### 3. Keep `Settings` as the internal control plane
-
-`Settings` should be the first user-visible host for platform primitives:
-- openOS preferences
-- maybe app list / app info / app-specific settings entrypoints
-- internal diagnostics/management seams that can grow later
-
-### 4. Keep `Notes` persistence isolated
-
-`Notes` should own its own storage module/repository and consume the shared platform namespace conventions.
-Do not entangle notes persistence with global shell state.
-
-### 5. Keep `Browser` isolated behind one managed web-view wrapper
-
-One browser host component should:
-- accept curated destinations
-- render iframe when embedding works
-- detect/load failure or blocked state heuristically
-- show fallback UI and external-open path
-
-Do not let arbitrary external sites shape the broader app/runtime architecture.
-
-## Suggested Build Order
-
-1. Multi-page home-screen/runtime extension
-2. Internal app-platform primitives
-3. Settings app
-4. Notes app
-5. Browser app
-6. Verification and polish
-
-## Likely Files / Areas
-
-- runtime app registry and runtime state
-- shell/home-screen layout and page indicators
-- new platform modules for preferences/settings/storage metadata
-- `Settings` app module
-- `Notes` app module with storage adapter
-- `Browser` app module with iframe host
-- Playwright and unit tests for new behaviors
+- Keep Notes local-first in `v1.2`.
+- Keep Browser honest: broader navigation is allowed, but blocked sites still need truthful fallback.
+- Keep submission/catalog work metadata-driven and internal-contract-first before installation mechanics.
+- Keep verification launcher-path-based where behavior touches real app flows.
