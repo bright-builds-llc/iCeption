@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
-status: defining_requirements
-stopped_at: v1.2 roadmap created
-last_updated: "2026-04-09T08:08:34Z"
+status: Ready to plan
+stopped_at: Phase 16 complete, ready for Phase 17 planning
+last_updated: "2026-04-11T15:59:55.032Z"
 progress:
   total_phases: 5
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  completed_phases: 1
+  total_plans: 3
+  completed_plans: 3
+  percent: 20
 ---
 
 # Project State: openOS
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Ready to discuss and plan Phase 16
+**Current focus:** Ready to discuss and plan Phase 17
 
 ## Artifact Status
 
@@ -32,22 +32,22 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
-| ROADMAP.md | Active | v1.2 phases 16-20 created |
-| STATE.md | Active | Updated after v1.2 roadmap creation |
+| ROADMAP.md | Active | Phase 16 complete; Phase 17 is next |
+| STATE.md | Active | Updated after Phase 16 completion |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start implementation planning at **Phase 16: Notes Search and Organization**.
+- Start implementation planning at **Phase 17: Browser Direct Navigation**.
 
 ### Most recently completed phase
 
-- **Milestone v1.1: Core Apps & Platform Foundations** — complete, audited, archived, and preserved under `.planning/milestones/`.
+- **Phase 16: Notes Search and Organization** — complete, verified, and ready to hand off.
 
 ### Planned next phase
 
-- **Phase 16: Notes Search and Organization** — make Notes searchable and structurally organized.
+- **Phase 17: Browser Direct Navigation** — let Browser accept direct URLs and broaden destination handling honestly.
 
 ## Notes
 
@@ -68,9 +68,9 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 ## Session
 
-**Last Date:** 2026-04-09T08:08:34Z
-**Stopped At:** v1.2 roadmap created
-**Resume File:** .planning/PROJECT.md
+**Last Date:** 2026-04-11T15:59:55Z
+**Stopped At:** Phase 16 complete, ready for Phase 17 planning
+**Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-04-09 after creating the v1.2 roadmap*
+*State updated: 2026-04-11 after completing Phase 16*

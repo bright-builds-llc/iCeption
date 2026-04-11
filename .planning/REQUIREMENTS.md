@@ -7,8 +7,8 @@
 
 ### Notes
 
-- [ ] **NOTE-05**: User can search notes by title and body text.
-- [ ] **NOTE-06**: User can organize notes using folders or tags and browse notes through that structure.
+- [x] **NOTE-05**: User can search notes by title and body text.
+- [x] **NOTE-06**: User can organize notes using folders or tags and browse notes through that structure.
 
 ### Browser
 
@@ -54,8 +54,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NOTE-05 | Phase 16 | Pending |
-| NOTE-06 | Phase 16 | Pending |
+| NOTE-05 | Phase 16 | Complete |
+| NOTE-06 | Phase 16 | Complete |
 | BROW-05 | Phase 17 | Pending |
 | BROW-06 | Phase 17 | Pending |
 | PLAT-04 | Phase 18 | Pending |
@@ -70,4 +70,4 @@
 
 ---
 *Requirements defined: 2026-04-09*
-*Last updated: 2026-04-09 after v1.2 definition*
+*Last updated: 2026-04-11 after completing Phase 16*

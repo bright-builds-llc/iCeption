@@ -1,6 +1,16 @@
 import { createAppStorageKey } from "../../platform/appStorage";
-import type { Note, NoteInput } from "./notesModel";
-import { sortNotesByUpdatedAt } from "./notesModel";
+import type {
+  Note,
+  NoteFolder,
+  NoteInput,
+} from "./notesModel";
+import {
+  DEFAULT_NOTES_FOLDER_ID,
+  DEFAULT_NOTES_FOLDER_NAME,
+  createDefaultNotesFolder,
+  sortNoteFolders,
+  sortNotesByUpdatedAt,
+} from "./notesModel";
 
 type StorageLike = Pick<
   Storage,
@@ -8,6 +18,13 @@ type StorageLike = Pick<
 >;
 
 const NOTES_STORAGE_KEY = "notes";
+const NOTES_STORAGE_VERSION = 2;
+
+type NotesSnapshot = {
+  version: 2;
+  folders: NoteFolder[];
+  notes: Note[];
+};
 
 function getNotesStorageKey(
   namespace: string,
@@ -15,72 +32,232 @@ function getNotesStorageKey(
   return createAppStorageKey(namespace, NOTES_STORAGE_KEY);
 }
 
-function parseNotes(
-  maybeValue: string | null,
-): Note[] {
-  if (maybeValue === null) {
-    return [];
+function isRecord(
+  maybeValue: unknown,
+): maybeValue is Record<string, unknown> {
+  return (
+    typeof maybeValue === "object" &&
+    maybeValue !== null
+  );
+}
+
+function parseFolder(
+  maybeValue: unknown,
+): NoteFolder | null {
+  if (
+    !isRecord(maybeValue) ||
+    typeof maybeValue.id !== "string" ||
+    typeof maybeValue.name !== "string" ||
+    typeof maybeValue.createdAt !== "string" ||
+    typeof maybeValue.updatedAt !== "string"
+  ) {
+    return null;
   }
 
-  try {
-    const maybeParsed = JSON.parse(maybeValue);
+  return {
+    id: maybeValue.id,
+    name: maybeValue.name,
+    createdAt: maybeValue.createdAt,
+    updatedAt: maybeValue.updatedAt,
+  };
+}
 
-    if (!Array.isArray(maybeParsed)) {
-      return [];
-    }
+function parseNote(
+  maybeValue: unknown,
+): Note | null {
+  if (
+    !isRecord(maybeValue) ||
+    typeof maybeValue.id !== "string" ||
+    typeof maybeValue.title !== "string" ||
+    typeof maybeValue.body !== "string" ||
+    typeof maybeValue.createdAt !== "string" ||
+    typeof maybeValue.updatedAt !== "string"
+  ) {
+    return null;
+  }
 
-    return maybeParsed.flatMap((item) => {
-      if (
-        typeof item !== "object" ||
-        item === null ||
-        typeof item.id !== "string" ||
-        typeof item.title !== "string" ||
-        typeof item.body !== "string" ||
-        typeof item.createdAt !== "string" ||
-        typeof item.updatedAt !== "string"
-      ) {
+  return {
+    id: maybeValue.id,
+    title: maybeValue.title,
+    body: maybeValue.body,
+    folderId:
+      typeof maybeValue.folderId === "string"
+        ? maybeValue.folderId
+        : DEFAULT_NOTES_FOLDER_ID,
+    createdAt: maybeValue.createdAt,
+    updatedAt: maybeValue.updatedAt,
+  };
+}
+
+function createEmptySnapshot(): NotesSnapshot {
+  return normalizeSnapshot({
+    version: NOTES_STORAGE_VERSION,
+    folders: [],
+    notes: [],
+  });
+}
+
+function normalizeSnapshot(
+  maybeSnapshot: NotesSnapshot,
+): NotesSnapshot {
+  const folderIds = new Set<string>();
+  const normalizedFolders = maybeSnapshot.folders.flatMap(
+    (folder) => {
+      if (folderIds.has(folder.id)) {
+        return [];
+      }
+
+      folderIds.add(folder.id);
+      return [folder];
+    },
+  );
+
+  if (!folderIds.has(DEFAULT_NOTES_FOLDER_ID)) {
+    normalizedFolders.push(createDefaultNotesFolder());
+    folderIds.add(DEFAULT_NOTES_FOLDER_ID);
+  }
+
+  const noteIds = new Set<string>();
+  const normalizedNotes = maybeSnapshot.notes.flatMap(
+    (note) => {
+      if (noteIds.has(note.id)) {
+        return [];
+      }
+
+      noteIds.add(note.id);
+      return [
+        {
+          ...note,
+          folderId: folderIds.has(note.folderId)
+            ? note.folderId
+            : DEFAULT_NOTES_FOLDER_ID,
+        },
+      ];
+    },
+  );
+
+  return {
+    version: NOTES_STORAGE_VERSION,
+    folders: sortNoteFolders(normalizedFolders),
+    notes: sortNotesByUpdatedAt(normalizedNotes),
+  };
+}
+
+function parseLegacySnapshot(
+  maybeValue: unknown[],
+): NotesSnapshot {
+  return normalizeSnapshot({
+    version: NOTES_STORAGE_VERSION,
+    folders: [createDefaultNotesFolder()],
+    notes: maybeValue.flatMap((item) => {
+      const maybeNote = parseNote(item);
+
+      if (maybeNote === null) {
         return [];
       }
 
       return [
         {
-          id: item.id,
-          title: item.title,
-          body: item.body,
-          createdAt: item.createdAt,
-          updatedAt: item.updatedAt,
+          ...maybeNote,
+          folderId: DEFAULT_NOTES_FOLDER_ID,
         },
       ];
+    }),
+  });
+}
+
+function parseSnapshot(
+  maybeValue: string | null,
+): NotesSnapshot {
+  if (maybeValue === null) {
+    return createEmptySnapshot();
+  }
+
+  try {
+    const maybeParsed = JSON.parse(maybeValue);
+
+    if (Array.isArray(maybeParsed)) {
+      return parseLegacySnapshot(maybeParsed);
+    }
+
+    if (
+      !isRecord(maybeParsed) ||
+      maybeParsed.version !== NOTES_STORAGE_VERSION ||
+      !Array.isArray(maybeParsed.folders) ||
+      !Array.isArray(maybeParsed.notes)
+    ) {
+      return createEmptySnapshot();
+    }
+
+    return normalizeSnapshot({
+      version: NOTES_STORAGE_VERSION,
+      folders: maybeParsed.folders.flatMap((item) => {
+        const maybeFolder = parseFolder(item);
+        return maybeFolder === null ? [] : [maybeFolder];
+      }),
+      notes: maybeParsed.notes.flatMap((item) => {
+        const maybeNote = parseNote(item);
+        return maybeNote === null ? [] : [maybeNote];
+      }),
     });
   } catch {
-    return [];
+    return createEmptySnapshot();
   }
 }
 
-function writeNotes(
+function readSnapshot(
   storage: StorageLike,
   namespace: string,
-  maybeNotes: Note[],
-): void {
-  const storageKey = getNotesStorageKey(namespace);
+): NotesSnapshot {
+  return parseSnapshot(
+    storage.getItem(getNotesStorageKey(namespace)),
+  );
+}
 
-  if (maybeNotes.length === 0) {
+function writeSnapshot(
+  storage: StorageLike,
+  namespace: string,
+  maybeSnapshot: NotesSnapshot,
+): void {
+  const snapshot = normalizeSnapshot(maybeSnapshot);
+  const storageKey = getNotesStorageKey(namespace);
+  const hasOnlyDefaultFolder =
+    snapshot.folders.length === 1 &&
+    snapshot.folders[0]?.id === DEFAULT_NOTES_FOLDER_ID &&
+    snapshot.folders[0]?.name === DEFAULT_NOTES_FOLDER_NAME;
+
+  if (
+    snapshot.notes.length === 0 &&
+    hasOnlyDefaultFolder
+  ) {
     storage.removeItem(storageKey);
     return;
   }
 
-  storage.setItem(storageKey, JSON.stringify(maybeNotes));
+  storage.setItem(storageKey, JSON.stringify(snapshot));
+}
+
+function resolveFolderId(
+  maybeFolders: NoteFolder[],
+  folderId: string,
+): string {
+  return maybeFolders.some((folder) => folder.id === folderId)
+    ? folderId
+    : DEFAULT_NOTES_FOLDER_ID;
+}
+
+export function listStoredFolders(
+  storage: StorageLike,
+  namespace: string,
+): NoteFolder[] {
+  return readSnapshot(storage, namespace).folders;
 }
 
 export function listStoredNotes(
   storage: StorageLike,
   namespace: string,
 ): Note[] {
-  return sortNotesByUpdatedAt(
-    parseNotes(
-      storage.getItem(getNotesStorageKey(namespace)),
-    ),
-  );
+  return readSnapshot(storage, namespace).notes;
 }
 
 export function getStoredNote(
@@ -104,6 +281,7 @@ export function createStoredNote(
     now?: () => string;
   },
 ): Note {
+  const snapshot = readSnapshot(storage, namespace);
   const createId =
     maybeOptions?.createId ??
     (() => crypto.randomUUID());
@@ -115,17 +293,69 @@ export function createStoredNote(
     id: createId(),
     title: input.title,
     body: input.body,
+    folderId: resolveFolderId(
+      snapshot.folders,
+      input.folderId,
+    ),
     createdAt: timestamp,
     updatedAt: timestamp,
   };
-  const nextNotes = [
-    nextNote,
-    ...listStoredNotes(storage, namespace),
-  ];
 
-  writeNotes(storage, namespace, nextNotes);
+  writeSnapshot(storage, namespace, {
+    ...snapshot,
+    notes: [nextNote, ...snapshot.notes],
+  });
 
   return nextNote;
+}
+
+export function createStoredFolder(
+  storage: StorageLike,
+  namespace: string,
+  folderName: string,
+  maybeOptions?: {
+    createId?: () => string;
+    now?: () => string;
+  },
+): NoteFolder | null {
+  const trimmedName = folderName.trim();
+
+  if (trimmedName === "") {
+    return null;
+  }
+
+  const snapshot = readSnapshot(storage, namespace);
+  const normalizedName = trimmedName.toLowerCase();
+
+  if (
+    snapshot.folders.some(
+      (folder) =>
+        folder.name.trim().toLowerCase() === normalizedName,
+    )
+  ) {
+    return null;
+  }
+
+  const createId =
+    maybeOptions?.createId ??
+    (() => crypto.randomUUID());
+  const now =
+    maybeOptions?.now ??
+    (() => new Date().toISOString());
+  const timestamp = now();
+  const nextFolder: NoteFolder = {
+    id: createId(),
+    name: trimmedName,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  };
+
+  writeSnapshot(storage, namespace, {
+    ...snapshot,
+    folders: [...snapshot.folders, nextFolder],
+  });
+
+  return nextFolder;
 }
 
 export function updateStoredNote(
@@ -137,11 +367,12 @@ export function updateStoredNote(
     now?: () => string;
   },
 ): Note | null {
+  const snapshot = readSnapshot(storage, namespace);
   const now =
     maybeOptions?.now ??
     (() => new Date().toISOString());
   let maybeUpdatedNote: Note | null = null;
-  const nextNotes = listStoredNotes(storage, namespace).map(
+  const nextNotes = snapshot.notes.map(
     (note) => {
       if (note.id !== noteId) {
         return note;
@@ -151,6 +382,13 @@ export function updateStoredNote(
         ...note,
         title: updates.title ?? note.title,
         body: updates.body ?? note.body,
+        folderId:
+          updates.folderId === undefined
+            ? note.folderId
+            : resolveFolderId(
+                snapshot.folders,
+                updates.folderId,
+              ),
         updatedAt: now(),
       };
 
@@ -162,7 +400,10 @@ export function updateStoredNote(
     return null;
   }
 
-  writeNotes(storage, namespace, nextNotes);
+  writeSnapshot(storage, namespace, {
+    ...snapshot,
+    notes: nextNotes,
+  });
 
   return maybeUpdatedNote;
 }
@@ -172,16 +413,19 @@ export function deleteStoredNote(
   namespace: string,
   noteId: string,
 ): boolean {
-  const currentNotes = listStoredNotes(storage, namespace);
-  const nextNotes = currentNotes.filter(
+  const snapshot = readSnapshot(storage, namespace);
+  const nextNotes = snapshot.notes.filter(
     (note) => note.id !== noteId,
   );
 
-  if (nextNotes.length === currentNotes.length) {
+  if (nextNotes.length === snapshot.notes.length) {
     return false;
   }
 
-  writeNotes(storage, namespace, nextNotes);
+  writeSnapshot(storage, namespace, {
+    ...snapshot,
+    notes: nextNotes,
+  });
 
   return true;
 }

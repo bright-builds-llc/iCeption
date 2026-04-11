@@ -19,7 +19,7 @@
 
 | Phase | Name | Goal | Requirements | Success Criteria |
 |-------|------|------|--------------|------------------|
-| 16 | Notes Search and Organization | Make `Notes` useful beyond a flat list with local search and durable organization | NOTE-05, NOTE-06 | 4 |
+| 16 | Notes Search and Organization | Make `Notes` useful beyond a flat local notebook by adding search and durable organization | NOTE-05, NOTE-06 | 4 |
 | 17 | Browser Direct Navigation | Let `Browser` accept direct URLs and broaden navigation without breaking the current truthfulness model | BROW-05, BROW-06 | 4 |
 | 18 | App Submission Foundations | Introduce the first repo-driven app submission contract on top of the shared app-platform layer | PLAT-04 | 4 |
 | 19 | App Catalog | Expose the first in-product app catalog surface from shared submission metadata | PLAT-05 | 4 |
@@ -31,7 +31,7 @@
 
 **Goal:** Make `Notes` useful beyond a flat local notebook by adding search and durable organization.
 
-**Status:** Planned
+**Status:** Complete
 
 **Requirements:** NOTE-05, NOTE-06
 
@@ -126,8 +126,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NOTE-05 | Phase 16 | Pending |
-| NOTE-06 | Phase 16 | Pending |
+| NOTE-05 | Phase 16 | Complete |
+| NOTE-06 | Phase 16 | Complete |
 | BROW-05 | Phase 17 | Pending |
 | BROW-06 | Phase 17 | Pending |
 | PLAT-04 | Phase 18 | Pending |
@@ -141,4 +141,4 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-09 after starting v1.2*
+*Roadmap updated: 2026-04-11 after completing Phase 16*

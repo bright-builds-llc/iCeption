@@ -4,14 +4,19 @@
 }
 
 .notes-app__hero {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 14px;
+  display: grid;
+  gap: 16px;
 }
 
-.notes-app__eyebrow {
-  margin: 0 0 6px;
+.notes-app__hero-copy {
+  display: grid;
+  gap: 10px;
+}
+
+.notes-app__eyebrow,
+.notes-app__panel-eyebrow,
+.notes-app__field-label {
+  margin: 0;
   color: rgba(244, 248, 255, 0.58);
   font-size: 0.72rem;
   font-weight: 700;
@@ -26,23 +31,58 @@
   letter-spacing: -0.05em;
 }
 
+.notes-app__hero-body {
+  margin: 0;
+  max-width: 32rem;
+  color: rgba(244, 248, 255, 0.72);
+  line-height: 1.55;
+}
+
+.notes-app__hero-actions {
+  display: flex;
+  justify-content: end;
+  align-items: start;
+}
+
 .notes-app__create,
-.notes-app__delete {
+.notes-app__delete,
+.notes-app__folder-save {
   border: 0;
   border-radius: 18px;
   padding: 12px 14px;
-  color: #041127;
-  cursor: pointer;
   font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease,
+    background 160ms ease;
 }
 
 .notes-app__create {
+  color: #041127;
   background: linear-gradient(180deg, #fde68a 0%, #facc15 100%);
 }
 
 .notes-app__delete {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   color: rgba(244, 248, 255, 0.92);
+}
+
+.notes-app__folder-save {
+  color: rgba(244, 248, 255, 0.92);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.notes-app__create:hover,
+.notes-app__delete:hover,
+.notes-app__folder-save:hover {
+  transform: translateY(-1px);
+}
+
+.notes-app__folder-save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .notes-app__warning {
@@ -53,24 +93,127 @@
   line-height: 1.45;
 }
 
-.notes-app__layout {
+.notes-app__toolbar {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
+.notes-app__search,
+.notes-app__folder-composer,
 .notes-app__list,
 .notes-app__editor {
   display: grid;
   gap: 10px;
   padding: 16px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.06);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.notes-app__search-input,
+.notes-app__folder-input,
+.notes-app__title-input,
+.notes-app__body-input,
+.notes-app__folder-select {
+  width: 100%;
+  border: 0;
+  border-radius: 18px;
+  color: rgba(244, 248, 255, 0.96);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.notes-app__search-input,
+.notes-app__folder-input,
+.notes-app__title-input,
+.notes-app__folder-select {
+  padding: 14px 16px;
+}
+
+.notes-app__search-input::placeholder,
+.notes-app__folder-input::placeholder,
+.notes-app__title-input::placeholder,
+.notes-app__body-input::placeholder {
+  color: rgba(244, 248, 255, 0.42);
+}
+
+.notes-app__field-hint {
+  color: rgba(244, 248, 255, 0.58);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.notes-app__folder-composer {
+  align-content: start;
+}
+
+.notes-app__folder-composer-field,
+.notes-app__editor-field {
+  display: grid;
+  gap: 8px;
+}
+
+.notes-app__folder-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notes-app__folder-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+}
+
+.notes-app__folder-chip[data-active="true"] {
+  background: rgba(250, 204, 21, 0.16);
+  border: 1px solid rgba(250, 204, 21, 0.34);
+}
+
+.notes-app__folder-chip-title {
+  font-weight: 700;
+}
+
+.notes-app__folder-chip-count,
+.notes-app__editor-stamp,
+.notes-app__list-folder,
+.notes-app__panel-meta {
+  color: rgba(244, 248, 255, 0.62);
+  font-size: 0.88rem;
+}
+
+.notes-app__layout {
+  display: grid;
+  gap: 14px;
+}
+
+.notes-app__panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: end;
+}
+
+.notes-app__panel-title {
+  margin: 4px 0 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.03em;
 }
 
 .notes-app__list-item {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   width: 100%;
   border: 0;
   border-radius: 18px;
@@ -86,43 +229,63 @@
   border: 1px solid rgba(250, 204, 21, 0.34);
 }
 
+.notes-app__list-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
 .notes-app__list-title {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
+.notes-app__list-folder {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .notes-app__list-preview {
-  color: rgba(244, 248, 255, 0.62);
-  font-size: 0.9rem;
-  line-height: 1.45;
+  color: rgba(244, 248, 255, 0.7);
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
-.notes-app__editor-actions {
+.notes-app__editor-topline {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: start;
 }
 
-.notes-app__title-input,
-.notes-app__body-input {
-  width: 100%;
-  border: 0;
-  color: rgba(244, 248, 255, 0.96);
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 18px;
+.notes-app__editor-meta {
+  display: grid;
+  gap: 10px;
+  flex: 1 1 auto;
+}
+
+.notes-app__folder-select-wrap {
+  position: relative;
+}
+
+.notes-app__folder-select {
+  appearance: none;
+  font-weight: 600;
 }
 
 .notes-app__title-input {
-  padding: 14px 16px;
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .notes-app__body-input {
-  min-height: 220px;
+  min-height: 240px;
   padding: 16px;
   resize: vertical;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .notes-app__empty {
@@ -130,5 +293,25 @@
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
   color: rgba(244, 248, 255, 0.62);
-  line-height: 1.45;
+  line-height: 1.5;
+}
+
+.notes-app__empty--editor {
+  min-height: 240px;
+  align-content: center;
+}
+
+@media (min-width: 720px) {
+  .notes-app__hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+
+  .notes-app__toolbar {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+  .notes-app__layout {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  }
 }
