@@ -17,7 +17,7 @@
 
 ### Platform
 
-- [ ] **PLAT-04**: Contributors can submit apps through a repo-driven review workflow.
+- [x] **PLAT-04**: Contributors can submit apps through a repo-driven review workflow.
 - [ ] **PLAT-05**: User can browse apps in an in-product app catalog.
 
 ### Verification
@@ -58,7 +58,7 @@
 | NOTE-06 | Phase 16 | Complete |
 | BROW-05 | Phase 17 | Complete |
 | BROW-06 | Phase 17 | Complete |
-| PLAT-04 | Phase 18 | Pending |
+| PLAT-04 | Phase 18 | Complete |
 | PLAT-05 | Phase 19 | Pending |
 | QUAL-05 | Phase 20 | Pending |
 | QUAL-06 | Phase 20 | Pending |
@@ -70,4 +70,4 @@
 
 ---
 *Requirements defined: 2026-04-09*
-*Last updated: 2026-04-11 after completing Phase 17*
+*Last updated: 2026-04-11 after completing Phase 18*

@@ -1,0 +1,40 @@
+{
+  "id": "studio-lab",
+  "label": "Studio Lab",
+  "summary": "A lightweight loop, pad, and mix surface for sketching audio ideas in openOS.",
+  "description": "Studio Lab is a browser-native audio sketchpad designed to prove the first repo-driven app submission contract before any install surface is added to openOS.",
+  "developer": {
+    "name": "Bright Builds Labs"
+  },
+  "source": {
+    "repositoryUrl": "https://github.com/bright-builds-llc/openos-studio-lab"
+  },
+  "icon": {
+    "glyph": "◈",
+    "tintStart": "#f472b6",
+    "tintEnd": "#7c3aed"
+  },
+  "runtime": {
+    "launchId": "studio-lab",
+    "settings": {
+      "visibility": "hidden"
+    },
+    "storage": {
+      "namespace": "openos.apps.submitted.studio-lab"
+    }
+  },
+  "catalog": {
+    "status": "catalog-ready",
+    "category": "Creativity",
+    "tags": [
+      "audio",
+      "loops",
+      "creator"
+    ]
+  },
+  "review": {
+    "submittedAt": "2026-04-11",
+    "reviewedAt": "2026-04-11",
+    "reviewNotes": "Validated as the first sample repo-driven submission for Phase 18."
+  }
+}

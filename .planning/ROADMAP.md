@@ -21,7 +21,7 @@
 |-------|------|------|--------------|------------------|
 | 16 | Notes Search and Organization | Make `Notes` useful beyond a flat local notebook by adding search and durable organization | NOTE-05, NOTE-06 | 4 |
 | 17 | Browser Direct Navigation | Let `Browser` accept direct URLs and broaden destination handling while keeping fallback behavior honest | BROW-05, BROW-06 | 4 |
-| 18 | App Submission Foundations | Introduce the first repo-driven app submission contract on top of the shared app-platform layer | PLAT-04 | 4 |
+| 18 | App Submission Foundations | Introduce the first repo-driven app submission workflow on top of the shared openOS app-platform layer | PLAT-04 | 4 |
 | 19 | App Catalog | Expose the first in-product app catalog surface from shared submission metadata | PLAT-05 | 4 |
 | 20 | Verification and Distribution Integration | Prove Notes, Browser, and catalog/distribution flows work together cleanly | QUAL-05, QUAL-06 | 4 |
 
@@ -69,7 +69,7 @@
 
 **Goal:** Introduce the first repo-driven app submission workflow on top of the shared openOS app-platform layer.
 
-**Status:** Planned
+**Status:** Complete
 
 **Requirements:** PLAT-04
 
@@ -130,7 +130,7 @@
 | NOTE-06 | Phase 16 | Complete |
 | BROW-05 | Phase 17 | Complete |
 | BROW-06 | Phase 17 | Complete |
-| PLAT-04 | Phase 18 | Pending |
+| PLAT-04 | Phase 18 | Complete |
 | PLAT-05 | Phase 19 | Pending |
 | QUAL-05 | Phase 20 | Pending |
 | QUAL-06 | Phase 20 | Pending |
@@ -141,4 +141,4 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-11 after completing Phase 17*
+*Roadmap updated: 2026-04-11 after completing Phase 18*

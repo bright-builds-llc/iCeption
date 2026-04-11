@@ -69,6 +69,14 @@ Use `bun run dev` for local iteration. Vite will print the local URL. Use `bun r
 - **Archived milestone roadmaps:** [.planning/milestones](.planning/milestones)
 - **Current project framing:** [.planning/PROJECT.md](.planning/PROJECT.md)
 
+## Submission foundations
+
+Phase `18` adds the first repo-driven app submission contract for future catalog work. The checked-in sample manifest and workflow notes live in [docs/app-submissions.md](docs/app-submissions.md), and the repo-owned validator runs with:
+
+```bash
+bun run submissions:check
+```
+
 ## Maintaining README media
 
 - Generate fresh artifact-only media locally:
