@@ -15,9 +15,12 @@ export function createAppStorageNamespace(appId: string): string {
 
 export function createAppStorageMetadata(
   appId: string,
+  maybeNamespaceAppId?: string,
 ): AppStorageMetadata {
   return {
-    namespace: createAppStorageNamespace(appId),
+    namespace: createAppStorageNamespace(
+      maybeNamespaceAppId ?? appId,
+    ),
   };
 }
 

@@ -4,7 +4,7 @@
 
 - ✅ **v1 iPhone Web App Foundation** — Phases 1-8, shipped 2026-04-05. Archive: [.planning/milestones/v1-ROADMAP.md](./milestones/v1-ROADMAP.md)
 - ✅ **v1.1 Core Apps & Platform Foundations** — Phases 9-15, shipped 2026-04-09. Archive: [.planning/milestones/v1.1-ROADMAP.md](./milestones/v1.1-ROADMAP.md)
-- 🚧 **v1.2 Notes, Browser & Platform Growth** — Phases 16-20, planned
+- 🚧 **v1.2 Notes, Browser & Platform Growth** — Phases 16-22, ready for closeout
 
 ## Overview
 
@@ -147,7 +147,7 @@
 
 **Goal:** Remove residual Browser launcher identity risk and strengthen launcher-path coverage across grid and dock entrypoints.
 
-**Status:** Planned
+**Status:** Complete
 
 **Requirements:** None — closes `v1.2` tech debt affecting future Browser persistence and launcher-path proof
 
@@ -181,4 +181,4 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-11 after completing Phase 21*
+*Roadmap updated: 2026-04-11 after completing Phase 22*

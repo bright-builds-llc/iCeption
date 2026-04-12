@@ -152,7 +152,7 @@ describe("appRegistry", () => {
     expect(result).toEqual([
       "openos.apps.notes",
       "openos.apps.settings",
-      "openos.apps.browser-grid",
+      "openos.apps.browser",
       "openos.apps.browser",
       "openos.apps.library",
     ]);
@@ -171,7 +171,7 @@ describe("appRegistry", () => {
     // Assert
     expect(result).toEqual([
       "openos.apps.notes",
-      "openos.apps.browser-grid",
+      "openos.apps.browser",
       "openos.apps.library",
     ]);
   });

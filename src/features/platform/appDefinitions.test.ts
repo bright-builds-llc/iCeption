@@ -93,13 +93,13 @@ describe("appDefinitions", () => {
     expect(result).toEqual([
       { id: "notes", namespace: "openos.apps.notes" },
       { id: "settings", namespace: "openos.apps.settings" },
-      { id: "browser-grid", namespace: "openos.apps.browser-grid" },
+      { id: "browser-grid", namespace: "openos.apps.browser" },
       { id: "library", namespace: "openos.apps.library" },
       { id: "browser", namespace: "openos.apps.browser" },
     ]);
   });
 
-  it("uses one Browser launch surface across grid and dock entries", () => {
+  it("uses one Browser launch surface and storage identity across grid and dock entries", () => {
     // Arrange
     const browserEntries = builtInAppDefinitions.filter((app) =>
       ["browser-grid", "browser"].includes(app.id),
@@ -110,6 +110,7 @@ describe("appDefinitions", () => {
       id: app.id,
       launchSurface: app.launchSurface,
       placement: app.placement,
+      namespace: app.storage.namespace,
     }));
 
     // Assert
@@ -118,11 +119,13 @@ describe("appDefinitions", () => {
         id: "browser-grid",
         launchSurface: "browser",
         placement: "grid",
+        namespace: "openos.apps.browser",
       },
       {
         id: "browser",
         launchSurface: "browser",
         placement: "dock",
+        namespace: "openos.apps.browser",
       },
     ]);
   });

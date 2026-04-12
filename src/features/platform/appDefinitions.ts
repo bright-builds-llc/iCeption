@@ -235,7 +235,10 @@ export const builtInAppDefinitions: RuntimeAppDefinition[] = [
     label: "Browser",
     icon: { glyph: "◍", tintStart: "#60a5fa", tintEnd: "#0f172a" },
     settings: createAppSettingsParticipation("app-list"),
-    storage: createAppStorageMetadata("browser-grid"),
+    storage: createAppStorageMetadata(
+      "browser-grid",
+      "browser",
+    ),
     placement: "grid",
     page: 1,
     availability: "implemented",

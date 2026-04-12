@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
-status: Ready to plan
-stopped_at: Phase 21 complete, ready for Phase 22 planning
-last_updated: "2026-04-11T22:20:22.047Z"
+status: Ready for milestone closeout
+stopped_at: Phase 22 complete, ready for v1.2 milestone closeout
+last_updated: "2026-04-12T01:24:32.244Z"
 progress:
   total_phases: 7
-  completed_phases: 6
-  total_plans: 18
-  completed_plans: 18
-  percent: 86
+  completed_phases: 7
+  total_plans: 20
+  completed_plans: 20
+  percent: 100
 ---
 
 # Project State: openOS
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Ready to discuss and plan Phase 22
+**Current focus:** Ready to close out `v1.2` after Phase 22
 
 ## Artifact Status
 
@@ -32,22 +32,22 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
-| ROADMAP.md | Active | Phase 21 complete; Phase 22 is next |
-| STATE.md | Active | Updated after Phase 21 completion |
+| ROADMAP.md | Active | Phase 22 complete; milestone closeout is next |
+| STATE.md | Active | Updated after Phase 22 completion |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start planning **Phase 22: Browser Launcher Identity Cleanup**.
+- Run milestone closeout for **v1.2 Notes, Browser & Platform Growth**.
 
 ### Most recently completed phase
 
-- **Phase 21: Submitted Manifest Discovery Hardening** — complete, verified, and ready to hand off.
+- **Phase 22: Browser Launcher Identity Cleanup** — complete, verified, and ready to hand off.
 
 ### Planned next phase
 
-- **Phase 22: Browser Launcher Identity Cleanup** — remove residual Browser launcher identity risk and strengthen dock-path coverage.
+- None. `v1.2` phase work is complete; milestone closeout is next.
 
 ## Notes
 
@@ -62,15 +62,15 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 - Phase 13 established the managed Browser app with a truthful embedded/fallback model and deterministic browser verification.
 - Phase 14 locked the final integrated quality bar across pages, platform metadata, Settings, Notes, and Browser.
 - Historical phase directories were archived to `.planning/milestones/v1.1-phases/` before starting the next milestone.
-- The remaining low-risk audit note is Browser dock-entry launcher-path coverage, which can be folded into future Browser work.
+- Phase 22 closed the remaining Browser audit debt by making the shared Browser namespace explicit and adding dock-entry launcher-path proof.
 - v1.2 focus is Notes expansion, careful Browser expansion, and app distribution groundwork.
-- The milestone now spans Phases 16-20.
+- The milestone now spans Phases 16-22.
 
 ## Session
 
-**Last Date:** 2026-04-11T19:55:19Z
-**Stopped At:** Phase 21 complete, ready for Phase 22 planning
+**Last Date:** 2026-04-12T01:24:32Z
+**Stopped At:** Phase 22 complete, ready for v1.2 milestone closeout
 **Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-04-11 after completing Phase 21*
+*State updated: 2026-04-11 after completing Phase 22*

@@ -1,11 +1,40 @@
 import { expect, test } from "@playwright/test";
 import {
+  expectActiveHomePage,
   goToHomePage,
   gotoInstalledContextMode,
   openApp,
+  returnHome,
 } from "./fixtures/launcher";
 
 test.describe("browser app", () => {
+  test("opens through both Browser launchers with one shared storage identity", async ({
+    page,
+  }) => {
+    await gotoInstalledContextMode(page);
+    await goToHomePage(page, 1);
+
+    for (const appId of ["browser-grid", "browser"] as const) {
+      await openApp(page, appId);
+
+      await expect(page.getByTestId("browser-app")).toBeVisible();
+      await expect(page.getByTestId(`app-surface:${appId}`)).toHaveAttribute(
+        "data-storage-namespace",
+        "openos.apps.browser",
+      );
+      await expect(
+        page
+          .frameLocator('[data-testid="browser-frame-iframe"]')
+          .getByRole("heading", {
+            name: "Embedded destination ready",
+          }),
+      ).toBeVisible();
+
+      await returnHome(page, appId);
+      await expectActiveHomePage(page, 1);
+    }
+  });
+
   test("opens through the launcher, handles direct urls, and switches cleanly between embedded and fallback destinations", async ({
     page,
   }) => {
@@ -14,6 +43,9 @@ test.describe("browser app", () => {
     await openApp(page, "browser-grid");
 
     await expect(page.getByTestId("browser-app")).toBeVisible();
+    await expect(
+      page.getByTestId("app-surface:browser-grid"),
+    ).toHaveAttribute("data-storage-namespace", "openos.apps.browser");
     await expect(
       page.getByTestId("browser-destination:openos-guide"),
     ).toHaveAttribute("data-active", "true");

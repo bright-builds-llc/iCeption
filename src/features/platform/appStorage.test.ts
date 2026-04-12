@@ -30,6 +30,21 @@ describe("appStorage", () => {
     });
   });
 
+  it("can alias one launcher entry onto another app namespace", () => {
+    // Arrange
+
+    // Act
+    const result = createAppStorageMetadata(
+      "browser-grid",
+      "browser",
+    );
+
+    // Assert
+    expect(result).toEqual({
+      namespace: "openos.apps.browser",
+    });
+  });
+
   it("lists apps with storage namespaces", () => {
     // Arrange
 
