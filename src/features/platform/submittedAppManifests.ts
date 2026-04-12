@@ -54,10 +54,26 @@ export type SubmittedAppValidationResult = {
   issues: SubmittedAppValidationIssue[];
 };
 
+export type SubmittedAppManifestRegistryRecord = {
+  manifest: SubmittedAppManifest;
+  sourceFile: string;
+};
+
+export type SubmittedAppManifestRegistryDrift = {
+  unregisteredOnDisk: string[];
+  registeredMissingFile: string[];
+};
+
 export function createSubmittedAppStorageNamespace(
   submittedAppId: string,
 ): string {
   return `openos.apps.submitted.${submittedAppId}`;
+}
+
+export function createSubmittedAppManifestSourceFile(
+  manifestId: string,
+): string {
+  return `${manifestId}.json`;
 }
 
 function isHttpsUrl(
@@ -257,10 +273,66 @@ const studioLabManifestRecord =
 const signalBoxManifestRecord =
   signalBoxManifest as SubmittedAppManifest;
 
-export const submittedAppManifestRecords: SubmittedAppManifest[] = [
-  studioLabManifestRecord,
-  signalBoxManifestRecord,
-];
+export const submittedAppManifestRegistry: SubmittedAppManifestRegistryRecord[] =
+  [
+    {
+      manifest: studioLabManifestRecord,
+      sourceFile: createSubmittedAppManifestSourceFile(
+        studioLabManifestRecord.id,
+      ),
+    },
+    {
+      manifest: signalBoxManifestRecord,
+      sourceFile: createSubmittedAppManifestSourceFile(
+        signalBoxManifestRecord.id,
+      ),
+    },
+  ];
+
+export const submittedAppManifestRecords: SubmittedAppManifest[] =
+  submittedAppManifestRegistry.map(
+    (entry) => entry.manifest,
+  );
+
+export function detectSubmittedAppManifestRegistryDrift(
+  discoveredFiles: string[],
+  maybeRegistry: SubmittedAppManifestRegistryRecord[] = submittedAppManifestRegistry,
+): SubmittedAppManifestRegistryDrift {
+  const normalizedDiscoveredFiles = [
+    ...new Set(
+      discoveredFiles
+        .map((file) => file.trim())
+        .filter((file) => file !== ""),
+    ),
+  ].sort();
+  const registeredFiles = maybeRegistry.map(
+    (entry) => entry.sourceFile,
+  );
+
+  return {
+    unregisteredOnDisk: normalizedDiscoveredFiles.filter(
+      (file) => !registeredFiles.includes(file),
+    ),
+    registeredMissingFile: registeredFiles.filter(
+      (file) => !normalizedDiscoveredFiles.includes(file),
+    ),
+  };
+}
+
+export function hasSubmittedAppManifestRegistryDrift(
+  discoveredFiles: string[],
+  maybeRegistry: SubmittedAppManifestRegistryRecord[] = submittedAppManifestRegistry,
+): boolean {
+  const drift = detectSubmittedAppManifestRegistryDrift(
+    discoveredFiles,
+    maybeRegistry,
+  );
+
+  return (
+    drift.unregisteredOnDisk.length > 0 ||
+    drift.registeredMissingFile.length > 0
+  );
+}
 
 export function listSubmittedAppManifests(): SubmittedAppManifest[] {
   return submittedAppManifestRecords;

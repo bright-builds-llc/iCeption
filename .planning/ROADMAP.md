@@ -128,7 +128,7 @@
 
 **Goal:** Ensure submitted app manifests cannot be silently skipped between repo validation and the catalog source.
 
-**Status:** Planned
+**Status:** Complete
 
 **Requirements:** None — closes `v1.2` tech debt affecting `PLAT-04`, `PLAT-05`, and `QUAL-06`
 
@@ -181,4 +181,4 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-11 after completing Phase 20*
+*Roadmap updated: 2026-04-11 after completing Phase 21*

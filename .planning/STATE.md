@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
 status: Ready to plan
-stopped_at: Gap closure phases 21-22 created from v1.2 milestone audit
-last_updated: "2026-04-11T19:56:10.000Z"
+stopped_at: Phase 21 complete, ready for Phase 22 planning
+last_updated: "2026-04-11T22:20:22.047Z"
 progress:
   total_phases: 7
-  completed_phases: 5
-  total_plans: 15
-  completed_plans: 15
-  percent: 71
+  completed_phases: 6
+  total_plans: 18
+  completed_plans: 18
+  percent: 86
 ---
 
 # Project State: openOS
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Ready to discuss and plan Phase 21
+**Current focus:** Ready to discuss and plan Phase 22
 
 ## Artifact Status
 
@@ -32,22 +32,22 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
-| ROADMAP.md | Active | Gap-closure phases 21-22 added after the v1.2 milestone audit |
-| STATE.md | Active | Updated after planning the gap-closure phases |
+| ROADMAP.md | Active | Phase 21 complete; Phase 22 is next |
+| STATE.md | Active | Updated after Phase 21 completion |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start planning **Phase 21: Submitted Manifest Discovery Hardening**.
+- Start planning **Phase 22: Browser Launcher Identity Cleanup**.
 
 ### Most recently completed phase
 
-- **Phase 20: Verification and Distribution Integration** — complete, verified, and followed by gap-closure planning.
+- **Phase 21: Submitted Manifest Discovery Hardening** — complete, verified, and ready to hand off.
 
 ### Planned next phase
 
-- **Phase 21: Submitted Manifest Discovery Hardening** — harden submitted-manifest discovery and validation.
+- **Phase 22: Browser Launcher Identity Cleanup** — remove residual Browser launcher identity risk and strengthen dock-path coverage.
 
 ## Notes
 
@@ -69,8 +69,8 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 ## Session
 
 **Last Date:** 2026-04-11T19:55:19Z
-**Stopped At:** Gap closure phases 21-22 created from v1.2 milestone audit
+**Stopped At:** Phase 21 complete, ready for Phase 22 planning
 **Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-04-11 after planning gap-closure phases 21-22*
+*State updated: 2026-04-11 after completing Phase 21*

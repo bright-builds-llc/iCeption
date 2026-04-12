@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  detectSubmittedAppManifestRegistryDrift,
   createSubmittedAppStorageNamespace,
   getSubmittedAppManifestById,
+  hasSubmittedAppManifestRegistryDrift,
   listCatalogReadySubmittedApps,
   listSubmittedAppManifests,
   listSubmittedAppValidationResults,
@@ -131,5 +133,69 @@ describe("submittedAppManifests", () => {
 
     // Assert
     expect(result?.label).toBe("Studio Lab");
+  });
+
+  it("returns no registry drift when discovered files match the registered set", () => {
+    // Arrange
+    const discoveredFiles = [
+      "studio-lab.json",
+      "signal-box.json",
+    ];
+
+    // Act
+    const result = detectSubmittedAppManifestRegistryDrift(
+      discoveredFiles,
+    );
+
+    // Assert
+    expect(result).toEqual({
+      unregisteredOnDisk: [],
+      registeredMissingFile: [],
+    });
+    expect(
+      hasSubmittedAppManifestRegistryDrift(discoveredFiles),
+    ).toBe(false);
+  });
+
+  it("reports unregistered manifest files found on disk", () => {
+    // Arrange
+    const discoveredFiles = [
+      "studio-lab.json",
+      "signal-box.json",
+      "prototype-deck.json",
+    ];
+
+    // Act
+    const result = detectSubmittedAppManifestRegistryDrift(
+      discoveredFiles,
+    );
+
+    // Assert
+    expect(result).toEqual({
+      unregisteredOnDisk: ["prototype-deck.json"],
+      registeredMissingFile: [],
+    });
+    expect(
+      hasSubmittedAppManifestRegistryDrift(discoveredFiles),
+    ).toBe(true);
+  });
+
+  it("reports registered manifests whose backing files are missing on disk", () => {
+    // Arrange
+    const discoveredFiles = ["studio-lab.json"];
+
+    // Act
+    const result = detectSubmittedAppManifestRegistryDrift(
+      discoveredFiles,
+    );
+
+    // Assert
+    expect(result).toEqual({
+      unregisteredOnDisk: [],
+      registeredMissingFile: ["signal-box.json"],
+    });
+    expect(
+      hasSubmittedAppManifestRegistryDrift(discoveredFiles),
+    ).toBe(true);
   });
 });

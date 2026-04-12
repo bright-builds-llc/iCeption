@@ -1,9 +1,46 @@
 #!/usr/bin/env bun
 
+import { readdirSync } from "node:fs";
+import path from "node:path";
 import {
+  detectSubmittedAppManifestRegistryDrift,
   listCatalogReadySubmittedApps,
   listSubmittedAppValidationResults,
 } from "../src/features/platform/submittedAppManifests";
+
+const submittedAppsDirectory = path.resolve(
+  import.meta.dir,
+  "../src/features/platform/submitted-apps",
+);
+const discoveredManifestFiles = readdirSync(
+  submittedAppsDirectory,
+).filter((file) => file.endsWith(".json"));
+const registryDrift = detectSubmittedAppManifestRegistryDrift(
+  discoveredManifestFiles,
+);
+
+if (
+  registryDrift.unregisteredOnDisk.length > 0 ||
+  registryDrift.registeredMissingFile.length > 0
+) {
+  console.error(
+    "Submission manifest registry drift detected:",
+  );
+
+  for (const file of registryDrift.unregisteredOnDisk) {
+    console.error(
+      `- unregistered_on_disk: ${file} is present on disk but missing from submittedAppManifests.ts`,
+    );
+  }
+
+  for (const file of registryDrift.registeredMissingFile) {
+    console.error(
+      `- registered_missing_file: ${file} is registered in submittedAppManifests.ts but missing on disk`,
+    );
+  }
+
+  process.exit(1);
+}
 
 const validationResults =
   listSubmittedAppValidationResults();

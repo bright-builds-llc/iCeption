@@ -5,7 +5,7 @@ Phase `18` introduces the first repo-driven app submission contract for openOS. 
 ## Workflow
 
 1. Add a manifest JSON file under `src/features/platform/submitted-apps/`.
-2. Import that manifest in [submittedAppManifests.ts](/Users/peterryszkiewicz/Repos/iCeption/src/features/platform/submittedAppManifests.ts).
+2. Keep the shared registry in [submittedAppManifests.ts](/Users/peterryszkiewicz/Repos/iCeption/src/features/platform/submittedAppManifests.ts) in sync with the manifest files on disk.
 3. Run:
 
 ```bash
@@ -14,6 +14,11 @@ bun run test -- src/features/platform/submittedAppManifests.test.ts
 ```
 
 4. Include the manifest, any related docs, and passing validation in the pull request.
+
+The validator now fails closed if the manifest files on disk and the shared registry diverge. That means:
+
+- adding a new `*.json` file without updating the shared registry fails
+- leaving a registry entry behind after deleting or renaming a manifest file also fails
 
 ## Contract
 
@@ -54,3 +59,8 @@ bun run submissions:check
 bun run test
 bun run build
 ```
+
+`bun run submissions:check` is the first guardrail. It now verifies both:
+
+1. the submitted manifest registry matches the JSON files present in `src/features/platform/submitted-apps/`
+2. every registered manifest still passes the repo-owned content validation rules
